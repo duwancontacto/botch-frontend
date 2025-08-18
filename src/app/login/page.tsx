@@ -10,8 +10,7 @@ export default function LoginPage() {
   const { userType } = useUserType();
 
   return (
-    <>
-      <AuthRedirect />
+    <AuthRedirect>
       <main className="grid min-h-screen grid-cols-1 lg:grid-cols-2 bg-light">
         {/* Columna izquierda: imagen de fondo con contenido dinámico */}
         <div
@@ -108,6 +107,6 @@ export default function LoginPage() {
           </div>
         </div>
       </main>
-    </>
+    </AuthRedirect>
   );
 }

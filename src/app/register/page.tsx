@@ -27,11 +27,10 @@ export default function RegisterPage() {
     router.push("/");
   };
 
-  // Si el registro está completo, mostrar la pantalla de éxito
-  if (isRegistrationComplete) {
-    return (
-      <>
-        <AuthRedirect />
+  return (
+    <AuthRedirect>
+      {/* Si el registro está completo, mostrar la pantalla de éxito */}
+      {isRegistrationComplete ? (
         <main className="relative min-h-screen">
           <Image
             src={backgroundFinishImage}
@@ -60,55 +59,50 @@ export default function RegisterPage() {
             </button>
           </section>
         </main>
-      </>
-    );
-  }
-
-  return (
-    <>
-      <AuthRedirect />
-      <main className="relative min-h-screen  bg-white">
-        {/* Decorative header with curves */}
-        <div className="relative   h-40 sm:h-48 lg:h-56   min-h-[330px]">
-          <div className="absolute inset-0 bg-[#2a597e]" />
-          <Image
-            src={backgroundImage}
-            alt="Fondo Login Distribuidor"
-            fill
-            className="absolute inset-0 object-cover "
-            priority
-          />
-          <div className="relative z-10 mx-auto flex h-full max-w-5xl items-center justify-center px-6 text-center">
-            <h1 className="text-[#2a597e] text-2xl sm:text-3xl lg:text-4xl font-extrabold">
-              {tipo === "distributor"
-                ? "Registrate, cargá tus ventas"
-                : "Registrate, cargá tus compras"}
-              <br />
-              {"¡y ya estás participando!"}
-            </h1>
+      ) : (
+        <main className="relative min-h-screen  bg-white">
+          {/* Decorative header with curves */}
+          <div className="relative   h-40 sm:h-48 lg:h-56   min-h-[330px]">
+            <div className="absolute inset-0 bg-[#2a597e]" />
+            <Image
+              src={backgroundImage}
+              alt="Fondo Login Distribuidor"
+              fill
+              className="absolute inset-0 object-cover "
+              priority
+            />
+            <div className="relative z-10 mx-auto flex h-full max-w-5xl items-center justify-center px-6 text-center">
+              <h1 className="text-[#2a597e] text-2xl sm:text-3xl lg:text-4xl font-extrabold">
+                {tipo === "distributor"
+                  ? "Registrate, cargá tus ventas"
+                  : "Registrate, cargá tus compras"}
+                <br />
+                {"¡y ya estás participando!"}
+              </h1>
+            </div>
           </div>
-        </div>
 
-        {/* Content */}
-        <section className="mx-auto max-w-5xl px-6 py-10">
-          {/* Type toggle */}
-          <TypeSelector tipo={tipo} onChange={setTipo} />
+          {/* Content */}
+          <section className="mx-auto max-w-5xl px-6 py-10">
+            {/* Type toggle */}
+            <TypeSelector tipo={tipo} onChange={setTipo} />
 
-          {/* Forms */}
-          <div className="mt-8">
-            {tipo === "distributor" ? (
-              <FormularioDistribuidor
-                onRegistrationSuccess={handleRegistrationSuccess}
-              />
-            ) : (
-              <FormularioPuntoDeVenta
-                onRegistrationSuccess={handleRegistrationSuccess}
-              />
-            )}
-          </div>
-        </section>
-      </main>
-    </>
+            {/* Forms */}
+            <div className="mt-8">
+              {tipo === "distributor" ? (
+                <FormularioDistribuidor
+                  onRegistrationSuccess={handleRegistrationSuccess}
+                />
+              ) : (
+                <FormularioPuntoDeVenta
+                  onRegistrationSuccess={handleRegistrationSuccess}
+                />
+              )}
+            </div>
+          </section>
+        </main>
+      )}
+    </AuthRedirect>
   );
 }
 

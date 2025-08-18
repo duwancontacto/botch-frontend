@@ -19,8 +19,7 @@ export default function Page() {
   };
 
   return (
-    <>
-      <AuthRedirect />
+    <AuthRedirect>
       <main className="relative min-h-screen overflow-hidden pb-20">
         {/* Capa 1: Imagen de fondo */}
         <Image
@@ -94,6 +93,6 @@ export default function Page() {
         {/* Barra social inferior */}
         <Footer absolute={true} />
       </main>
-    </>
+    </AuthRedirect>
   );
 }

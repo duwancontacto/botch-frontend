@@ -51,6 +51,7 @@ export default function DashboardPuntoVenta() {
     handleSubmit,
     watch,
     setValue,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<PdvInvoiceFormData>({
     resolver: zodResolver(pdvInvoiceSchema),
@@ -79,6 +80,7 @@ export default function DashboardPuntoVenta() {
       await createPdvInvoice.mutateAsync(data);
       setIsSuccess(true);
       refetch();
+      reset();
     } catch (error) {
       console.error("Error al crear factura:", error);
     }
