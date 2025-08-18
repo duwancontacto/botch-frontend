@@ -1,14 +1,24 @@
 import Link from "next/link";
-import {Button} from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import backgroundImage from "@/assets/FondoFinishRegister.png";
 import logoImage from "@/assets/Logo.png";
+import { useAuth } from "store/useAuth";
 
-export default function ConfirmacionDistribuidorPage() {
+export default function SuccessDistributor({
+  setIsSuccess,
+}: {
+  setIsSuccess: (isSuccess: boolean) => void;
+}) {
+  const { logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <main className="relative min-h-screen overflow-hidden">
       {/* Fondo azul marca */}
-      <div className="absolute inset-0 bg-[#2a597e]" aria-hidden="true" />
 
       <Image
         src={backgroundImage}
@@ -21,19 +31,16 @@ export default function ConfirmacionDistribuidorPage() {
 
       <div className="relative z-10 mx-auto block md:flex max-w-6xl md:items-start md:justify-between gap-6 px-6 pt-6">
         <div className="flex items-center gap-2 sm:gap-3 text-white px-3  ">
-          <div className="relative w-[40px] h-[40px]">
+          <div className="relative w-[160px] h-[33px]">
             <Image
               src={logoImage}
               alt="Logo Bosch"
               fill
-              className="object-contain"
+              className="object-cover"
               priority
               quality={100}
             />
           </div>
-          <h6 className="text-2xl  md:text-2xl lg:text-3xl font-extrabold tracking-wide ">
-            BOSCH
-          </h6>
         </div>
         <div className="ml-auto flex items-center justify-content-between mt-5 md:mt-0 ">
           <Button
@@ -41,29 +48,33 @@ export default function ConfirmacionDistribuidorPage() {
             className="rounded-full bg-white/90 border-transparent text-[#2a597e] hover:bg-white h-14  w-[136px] mx-3 md:mx-10 my-3 cursor-pointer  font-bold"
             asChild
           >
-            <Link href="/Contacto">Contacto</Link>
+            <Link href="/contacto">Contacto</Link>
           </Button>
-          <Button className="rounded-full bg-white/90 border-transparent text-[#2a597e] hover:bg-white/30 h-14  w-[136px]  my-3 cursor-pointer  font-bold ">
-            <Link href="/.">{" Cerrar sesión"}</Link>{" "}
+          <Button
+            variant="outline"
+            className="rounded-full bg-white  border-white lg:ml-10 text-[#2a597e]  h-14  w-[136px]  text-sm md:text-base font-bold cursor-pointer"
+            onClick={handleLogout}
+          >
+            Cerrar sesión
           </Button>
         </div>
       </div>
 
       {/* Contenido centrado */}
       <section className="relative z-10 mx-auto flex min-h-0 md:min-h-screen max-w-5xl flex-col items-center justify-center px-6 text-center mt-8 md:mt-0 ">
-        <h1 className="text-white text-4xl  md:text-[65px]  font-extrabold">
+        <h1 className="text-white text-4xl  md:text-[60px]  font-extrabold">
           {"¡Ya estás participando"}
         </h1>
-        <p className="mt-6 text-[#ffff] text-2xl md:text-[36px] ">
+        <p className=" text-[#ffff] text-2x font-bold md:text-[36px] ">
           {"Gracias por confiar en BOSCH"}
         </p>
 
-        <div className="mt-10">
+        <div className="mt-8">
           <Button
-            asChild
-            className="rounded-full bg-[#3DADFF] text-white hover:bg-white/30 px-8 py-6 text-base"
+            className="rounded-full cursor-pointer text-lg bg-[#3dadff] text-white hover:bg-[#3dadff]/90 px-10 py-8 font-bold"
+            onClick={() => setIsSuccess(false)}
           >
-            <Link href="/Data-Distribuidor">{"Cargar mas ventas"}</Link>
+            Cargar mas ventas
           </Button>
         </div>
       </section>

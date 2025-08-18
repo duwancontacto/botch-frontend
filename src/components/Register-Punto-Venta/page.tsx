@@ -1,105 +1,229 @@
 "use client";
 
-import {Button} from "@/components/ui/button";
-import {Label} from "@/components/ui/label";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "@/components/ui/button";
+import FormField from "@/components/ui/form-field";
+import FormSelect from "@/components/ui/form-select";
+import { useRegisterPointOfSale } from "@/lib/hooks/use-auth-mutations";
+import { useDistributors } from "@/lib/hooks/use-distributors";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import Link from "next/link";
+  pointOfSaleSchema,
+  PointOfSaleFormData,
+} from "@/lib/schemas/auth-schemas";
+import { Distributor } from "@/lib/types/api-types";
+import { Loader2 } from "lucide-react";
+
+interface FormularioPuntoDeVentaProps {
+  onRegistrationSuccess: () => void;
+}
 
 export default function FormularioPuntoDeVenta({
-  Campo,
-}: {
-  Campo: React.ComponentType<{
-    id: string;
-    label: string;
-    type?: string;
-    labelClassName?: string;
-  }>;
-}) {
+  onRegistrationSuccess,
+}: FormularioPuntoDeVentaProps) {
+  const { data: distributors, isLoading: isLoadingDistributors } =
+    useDistributors();
+  const registerMutation = useRegisterPointOfSale();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    setValue,
+    watch,
+  } = useForm<PointOfSaleFormData>({
+    resolver: zodResolver(pointOfSaleSchema),
+    defaultValues: {
+      userType: "point_of_sale",
+      fullName: "",
+      fantasyName: "",
+      socialReason: "",
+      cuit: "",
+      habitualDistributorId: "",
+      phone: "",
+      address: "",
+      city: "",
+      province: "",
+      email: "",
+      password: "",
+      passwordConfirm: "",
+    },
+  });
+
+  const habitualDistributorId = watch("habitualDistributorId");
+
+  const onSubmit = async (data: PointOfSaleFormData) => {
+    try {
+      console.log(data);
+      await registerMutation.mutateAsync(data);
+      // Llamar a la función de éxito cuando el registro sea exitoso
+      onRegistrationSuccess();
+    } catch (error) {
+      // El error se maneja en el hook de mutación
+      console.error("Error en el formulario:", error);
+    }
+  };
+
+  const distributorOptions =
+    distributors?.map((dist: Distributor) => ({
+      value: dist.id,
+      label: dist.name,
+    })) || [];
+
   return (
-    <form className="space-y-7 text-[#2a597e] ">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="space-y-7 text-[#2a597e]"
+    >
       {/* Dos columnas: Nombre y apellido / Nombre fantasía */}
       <div className="grid gap-6 md:grid-cols-2">
-        <Campo
-          label="Nombre y apellido*  "
-          id="pv-nombre"
+        <FormField
+          label="Nombre y apellido"
+          id="fullName"
           labelClassName="font-bold"
+          required
+          error={errors.fullName?.message}
+          {...register("fullName")}
         />
-        <Campo
-          label="Nombre fantasía*"
-          id="pv-fantasia"
+        <FormField
+          label="Nombre fantasía"
+          id="fantasyName"
           labelClassName="font-bold"
+          required
+          error={errors.fantasyName?.message}
+          {...register("fantasyName")}
         />
       </div>
 
       {/* Razón social / CUIT */}
-      <div className="grid gap-6 md:grid-cols-2 ">
-        <Campo label="Razón social*" id="pv-razon" labelClassName="font-bold" />
-        <Campo label="CUIT*" id="pv-cuit" labelClassName="font-bold" />
+      <div className="grid gap-6 md:grid-cols-2">
+        <FormField
+          label="Razón social"
+          id="socialReason"
+          labelClassName="font-bold"
+          required
+          error={errors.socialReason?.message}
+          {...register("socialReason")}
+        />
+        <FormField
+          label="CUIT"
+          id="cuit"
+          labelClassName="font-bold"
+          //placeholder="XX-XXXXXXXX-X"
+          required
+          error={errors.cuit?.message}
+          {...register("cuit")}
+        />
       </div>
 
-      {/* Distribuidor habitual (Select) */}
+      {/* Distribuidor habitual (Select) - Obligatorio */}
       <div>
-        <Label htmlFor="pv-dist" className="text-[#2a597e] font-bold">
-          Distribuidor habitual
-        </Label>
-        <Select>
-          <SelectTrigger
-            id="pv-dist"
-            className="mt-2 h-12 rounded-full border-1 border-[#2a597e] text-[#2a597e]"
-          >
-            <SelectValue placeholder="Seleccionar..." />
-          </SelectTrigger>
-          <SelectContent className="text-[#2a597e] bg-[#FFF] border-0 cursor-pointer">
-            <SelectItem value="dist1">Distribuidor 1</SelectItem>
-            <SelectItem value="dist2">Distribuidor 2</SelectItem>
-            <SelectItem value="dist3">Distribuidor 3</SelectItem>
-          </SelectContent>
-        </Select>
+        <FormSelect
+          label="Distribuidor habitual"
+          id="habitualDistributorId"
+          labelClassName="font-bold"
+          placeholder="Seleccionar..."
+          required
+          options={distributorOptions}
+          value={habitualDistributorId}
+          onValueChange={(value) => setValue("habitualDistributorId", value)}
+          error={errors.habitualDistributorId?.message}
+        />
+        {isLoadingDistributors && (
+          <div className="flex items-center gap-2 mt-2 text-sm text-[#2a597e]/70">
+            <Loader2 className="h-4 w-4 animate-spin" />
+            Cargando distribuidores...
+          </div>
+        )}
       </div>
 
       {/* Teléfono / Mail */}
       <div className="grid gap-6 md:grid-cols-2">
-        <Campo label="Teléfono" id="pv-telefono" labelClassName="font-bold" />
-        <Campo
-          label="Mail*"
-          id="pv-mail"
+        <FormField
+          label="Teléfono"
+          id="phone"
+          labelClassName="font-bold"
+          required
+          error={errors.phone?.message}
+          {...register("phone")}
+        />
+        <FormField
+          label="Mail"
+          id="email"
           type="email"
           labelClassName="font-bold"
+          required
+          error={errors.email?.message}
+          {...register("email")}
         />
       </div>
 
       {/* Dirección / Localidad / Provincia */}
       <div className="grid gap-6 md:grid-cols-3">
-        <Campo label="Dirección" id="pv-direccion" labelClassName="font-bold" />
-        <Campo label="Localidad" id="pv-localidad" labelClassName="font-bold" />
-        <Campo label="Provincia" id="pv-provincia" labelClassName="font-bold" />
+        <FormField
+          label="Dirección"
+          id="address"
+          labelClassName="font-bold"
+          required
+          error={errors.address?.message}
+          {...register("address")}
+        />
+        <FormField
+          label="Localidad"
+          id="city"
+          labelClassName="font-bold"
+          required
+          error={errors.city?.message}
+          {...register("city")}
+        />
+        <FormField
+          label="Provincia"
+          id="province"
+          labelClassName="font-bold"
+          required
+          error={errors.province?.message}
+          {...register("province")}
+        />
       </div>
 
       {/* Passwords */}
       <div className="grid gap-6 md:grid-cols-2">
-        <Campo
-          label="Contraseña*"
-          id="pv-pass"
+        <FormField
+          label="Contraseña"
+          id="password"
           type="password"
           labelClassName="font-bold"
+          required
+          error={errors.password?.message}
+          {...register("password")}
         />
-        <Campo
-          label="Repetir contraseña*"
-          id="pv-pass2"
+        <FormField
+          label="Repetir contraseña"
+          id="passwordConfirm"
           type="password"
           labelClassName="font-bold"
+          required
+          error={errors.passwordConfirm?.message}
+          {...register("passwordConfirm")}
         />
       </div>
 
-      <div className="pt-2">
-        <Button className="rounded-full bg-[#2a597e] px-15 py-6 text-white hover:bg-[#2a597e]/90 font-semibold">
-          <Link href="/Finish-Register">Enviar</Link>
+      <span className="text-[18px]">Todos los campos son obligatorios *</span>
+
+      <div className="pt-6">
+        <Button
+          type="submit"
+          disabled={isSubmitting || registerMutation.isPending}
+          className="rounded-full bg-[#2a597e] px-15 py-6 text-white hover:bg-[#2a597e]/90 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {isSubmitting || registerMutation.isPending ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Enviando...
+            </>
+          ) : (
+            "Enviar"
+          )}
         </Button>
       </div>
     </form>

@@ -1,77 +1,153 @@
 "use client";
 
-import {Button} from "@/components/ui/button";
-import {Label} from "@/components/ui/label";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "@/components/ui/button";
+import FormField from "@/components/ui/form-field";
+import FormSelect from "@/components/ui/form-select";
+import { useRegisterDistributor } from "@/lib/hooks/use-auth-mutations";
+import { useDistributors } from "@/lib/hooks/use-distributors";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import Link from "next/link";
+  distributorSchema,
+  DistributorFormData,
+} from "@/lib/schemas/auth-schemas";
+import { Distributor } from "@/lib/types/api-types";
+import { Loader2 } from "lucide-react";
+
+interface FormularioDistribuidorProps {
+  onRegistrationSuccess: () => void;
+}
 
 export default function FormularioDistribuidor({
-  Campo,
-}: {
-  Campo: React.ComponentType<{
-    id: string;
-    label: string;
-    type?: string;
-    labelClassName?: string;
-  }>;
-}) {
+  onRegistrationSuccess,
+}: FormularioDistribuidorProps) {
+  const { data: distributors, isLoading: isLoadingDistributors } =
+    useDistributors();
+  const registerMutation = useRegisterDistributor();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    setValue,
+    watch,
+  } = useForm<DistributorFormData>({
+    resolver: zodResolver(distributorSchema),
+    defaultValues: {
+      userType: "distributor",
+      distributorId: "",
+      fullName: "",
+      email: "",
+      password: "",
+      passwordConfirm: "",
+    },
+  });
+
+  const distributorId = watch("distributorId");
+
+  const onSubmit = async (data: DistributorFormData) => {
+    try {
+      console.log("test");
+      await registerMutation.mutateAsync(data);
+      // Llamar a la función de éxito cuando el registro sea exitoso
+      onRegistrationSuccess();
+    } catch (error) {
+      // El error se maneja en el hook de mutación
+      console.error("Error en el formulario:", error);
+    }
+  };
+
+  const distributorOptions =
+    distributors?.map((dist: Distributor) => ({
+      value: dist.id,
+      label: dist.name,
+    })) || [];
+
   return (
-    <form className="space-y-7 text-[#2a597e]">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="space-y-7 text-[#2a597e]"
+    >
       {/* Distribuidor (Select) */}
       <div className="max-w-3xl">
-        <Label className="text-[#2a597e] font-bold">Distribuidor</Label>
-        <Select>
-          <SelectTrigger className="mt-2 h-12 rounded-full   border-[#2a597e] text-[#2a597e]">
-            <SelectValue placeholder="Seleccionar..." />
-          </SelectTrigger>
-          <SelectContent className="text-[#2a597e] bg-[#FFF] border-0 cursor-pointer">
-            <SelectItem value="dist1">Distribuidor 1</SelectItem>
-            <SelectItem value="dist2">Distribuidor 2</SelectItem>
-            <SelectItem value="dist3">Distribuidor 3</SelectItem>
-          </SelectContent>
-        </Select>
+        <FormSelect
+          label="Distribuidor"
+          id="distributorId"
+          labelClassName="font-bold"
+          placeholder="Seleccionar..."
+          required
+          options={distributorOptions}
+          value={distributorId}
+          onValueChange={(value) => setValue("distributorId", value)}
+          error={errors.distributorId?.message}
+        />
+        {isLoadingDistributors && (
+          <div className="flex items-center gap-2 mt-2 text-sm text-[#2a597e]/70">
+            <Loader2 className="h-4 w-4 animate-spin" />
+            Cargando distribuidores...
+          </div>
+        )}
       </div>
 
       {/* Nombre y Mail */}
       <div className="grid gap-6 md:grid-cols-2">
-        <Campo
-          label="Nombre y apellido del responsable*"
-          id="nombre"
+        <FormField
+          label="Nombre y apellido del responsable"
+          id="fullName"
           labelClassName="font-bold"
+          required
+          error={errors.fullName?.message}
+          {...register("fullName")}
         />
-        <Campo
-          label="Mail*"
-          id="mail"
+        <FormField
+          label="Mail"
+          id="email"
           type="email"
           labelClassName="font-bold"
+          required
+          error={errors.email?.message}
+          {...register("email")}
         />
       </div>
 
       {/* Passwords */}
       <div className="grid gap-6 md:grid-cols-2">
-        <Campo
-          label="Contraseña*"
-          id="pass"
+        <FormField
+          label="Contraseña"
+          id="password"
           type="password"
           labelClassName="font-bold"
+          required
+          error={errors.password?.message}
+          {...register("password")}
         />
-        <Campo
-          label="Repetir contraseña*"
-          id="pass2"
+        <FormField
+          label="Repetir contraseña"
+          id="passwordConfirm"
           type="password"
           labelClassName="font-bold"
+          required
+          error={errors.passwordConfirm?.message}
+          {...register("passwordConfirm")}
         />
       </div>
 
-      <div className="pt-2">
-        <Button className="rounded-full bg-[#2a597e] font-semibold px-15 py-6 text-white hover:bg-[#2a597e]/90">
-          <Link href="/Finish-Register">Enviar</Link>
+      <span className="text-[18px]">Todos los campos son obligatorios *</span>
+
+      <div className="pt-6">
+        <Button
+          type="submit"
+          disabled={isSubmitting || registerMutation.isPending}
+          className="rounded-full bg-[#2a597e] font-semibold px-15 py-6 text-white hover:bg-[#2a597e]/90 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {isSubmitting || registerMutation.isPending ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Enviando...
+            </>
+          ) : (
+            "Enviar"
+          )}
         </Button>
       </div>
     </form>
