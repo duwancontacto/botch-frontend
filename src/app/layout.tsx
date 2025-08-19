@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "BOTCH - Registro",
-  description: "Sistema de registro para distribuidores y puntos de venta",
+  description: "Sistema de registro para distribuidores y puntos de venta.",
 };
 
 export default function RootLayout({
