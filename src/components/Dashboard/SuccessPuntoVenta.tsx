@@ -7,6 +7,9 @@ import Image from "next/image";
 import backgroundImage from "@/assets/Fondo-Confirmacion.png";
 import { useAuth } from "store/useAuth";
 import { InvoiceSummary } from "@/lib/types/api-types";
+import { useState, useEffect } from "react";
+import ConfettiExplosion from "react-confetti-explosion";
+import { AnimatedSection } from "@/components/ui/animated-section";
 
 export default function SuccessPuntoVenta({
   setIsSuccess,
@@ -16,16 +19,55 @@ export default function SuccessPuntoVenta({
   invoiceSummary: InvoiceSummary;
 }) {
   const { logout } = useAuth();
+  const [isExploding, setIsExploding] = useState(false);
+
+  useEffect(() => {
+    // Activar la explosión de confeti cuando el componente se monta
+    setTimeout(() => {
+      setIsExploding(true);
+    }, 1000);
+
+    // Resetear después de 3 segundos para permitir múltiples explosiones
+    const timer = setTimeout(() => {
+      setIsExploding(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleLogout = () => {
     logout();
   };
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="relative min-h-screen bg-white">
+      {/* Explosión de confeti */}
+
       {/* HERO azul con textura y copy centrado */}
       <section className="relative ">
-        <div className="absolute inset-0 z-10 ">
+        {isExploding && (
+          <div className="fixed inset-0 flex items-center justify-center z-[100] pointer-events-none">
+            <ConfettiExplosion
+              force={0.8}
+              duration={3000}
+              particleCount={200}
+              width={1600}
+              colors={[
+                "#FF6B6B",
+                "#4ECDC4",
+                "#45B7D1",
+                "#96CEB4",
+                "#FFEAA7",
+                "#DDA0DD",
+                "#FFB347",
+                "#87CEEB",
+                "#98FB98",
+                "#F0E68C",
+              ]}
+            />
+          </div>
+        )}
+        <div className="absolute inset-0  ">
           <Image
             src={backgroundImage}
             alt="Fondo confirmacion"
@@ -34,103 +76,118 @@ export default function SuccessPuntoVenta({
             priority
           />
         </div>
-        <div className="relative z-10  mx-auto block md:flex md:items-start md:justify-between gap-6 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 pt-10">
-          <div className="flex items-center gap-2 sm:gap-3 text-white px-3  ">
-            <div className="relative w-[160px] h-[33px]">
-              <Image
-                src={logoImage}
-                alt="Logo Bosch"
-                fill
-                className="object-cover"
-                priority
-                quality={100}
-              />
+        <AnimatedSection delay={0.2}>
+          <div className="relative z-10  mx-auto block md:flex md:items-start md:justify-between gap-6 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 pt-10">
+            <div className="flex items-center gap-2 sm:gap-3 text-white px-3  ">
+              <div className="relative w-[160px] h-[33px]">
+                <Image
+                  src={logoImage}
+                  alt="Logo Bosch"
+                  fill
+                  className="object-cover"
+                  priority
+                  quality={100}
+                />
+              </div>
+            </div>
+            <div className="block md:flex-row flex-col items-end justify-end gap-2 sm:gap-3 z-20">
+              <Button
+                variant="outline"
+                className="rounded-full border-2 border-white  bg-white  text-[#2a597e] h-14  w-[136px] mx-3 my-3 cursor-pointer md:my-0  text-sm md:text-base font-bold"
+                asChild
+              >
+                <Link href="/contacto">Contacto</Link>
+              </Button>
+              <Button
+                variant="outline"
+                className="rounded-full bg-white  border-white lg:ml-10 text-[#2a597e]  h-14  w-[136px]  text-sm md:text-base font-bold cursor-pointer"
+                onClick={handleLogout}
+              >
+                Cerrar sesión
+              </Button>
             </div>
           </div>
-          <div className="block md:flex-row flex-col items-end justify-end gap-2 sm:gap-3 z-20">
-            <Button
-              variant="outline"
-              className="rounded-full border-2 border-white  bg-white  text-[#2a597e] h-14  w-[136px] mx-3 my-3 cursor-pointer md:my-0  text-sm md:text-base font-bold"
-              asChild
-            >
-              <Link href="/contacto">Contacto</Link>
-            </Button>
-            <Button
-              variant="outline"
-              className="rounded-full bg-white  border-white lg:ml-10 text-[#2a597e]  h-14  w-[136px]  text-sm md:text-base font-bold cursor-pointer"
-              onClick={handleLogout}
-            >
-              Cerrar sesión
-            </Button>
-          </div>
-        </div>
+        </AnimatedSection>
         {/* Mensaje principal */}
         <div className="relative min-h-[600px] z-10 mx-auto flex max-w-4xl flex-col items-center justify-center px-6 py-10 text-center sm:py-20">
-          <h1 className="text-white text-4xl md:text-[60px] font-extrabold">
-            {"Ya estás participando"}
-          </h1>
-          <p className=" text-white text-2xl font-bold md:text-[36px]">
-            {"Gracias por confiar en BOSCH"}
-          </p>
+          <AnimatedSection delay={0.4}>
+            <h1 className="text-white text-4xl md:text-[60px] font-extrabold">
+              {"Ya estás participando"}
+            </h1>
+          </AnimatedSection>
 
-          <p className="mt-6 text-white text-lg md:text-[20px]">
-            {"Cuantas más bujías compres, ¡más chances sumás! "}
-            <br></br>
-            <span className="font-bold text-lg md:text-[20px]">
-              {"Seguí cargando tus compras y aumentá tus posibilidades."}
-            </span>
-          </p>
+          <AnimatedSection delay={0.6}>
+            <p className=" text-white text-2xl font-bold md:text-[36px]">
+              {"Gracias por confiar en BOSCH"}
+            </p>
+          </AnimatedSection>
 
-          <div className="mt-8">
-            <Button
-              className="rounded-full cursor-pointer text-lg bg-[#3dadff] text-white hover:bg-[#3dadff]/90 px-10 py-8 font-bold"
-              onClick={() => setIsSuccess(false)}
-            >
-              {"Cargar más facturas"}
-            </Button>
-          </div>
+          <AnimatedSection delay={0.6}>
+            <p className="mt-6 text-white text-lg md:text-[20px]">
+              {"Cuantas más bujías compres, ¡más chances sumás! "}
+              <br></br>
+              <span className="font-bold text-lg md:text-[20px]">
+                {"Seguí cargando tus compras y aumentá tus posibilidades."}
+              </span>
+            </p>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.8}>
+            <div className="mt-8">
+              <Button
+                className="rounded-full cursor-pointer text-lg bg-[#3dadff] text-white hover:bg-[#3dadff]/90 px-10 py-8 font-bold"
+                onClick={() => setIsSuccess(false)}
+              >
+                {"Cargar más facturas"}
+              </Button>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
       {/* Franja de contadores (azul claro) */}
-      <section className="bg-[#3dadff]/15 p-6 py-10 ">
-        <div className="mx-auto  max-w-6xl  block md:items-center py-2 md:px-6 md:py-6 md:flex  md:justify-center px-3 ">
-          <h2 className="text-center sm:text-center text-[#2a597e] text-md md:text-[36px] mr-10 font-extrabold">
-            {"Ya llevás cargadas"}
-          </h2>
-          <div className="flex items-center justify-center gap-2 mx-3 md:mx-10">
-            <span className=" text-md md:text-5xl font-extrabold text-[#2a597e]">
-              {invoiceSummary?.totalUnits || 0}
-            </span>
-            <span className="text-[#2a597e] font-bold  text-[16px]">
-              {"bujías"}
-            </span>
-            <span className="mx-8 text-md md:text-5xl font-extrabold text-[#2a597e]">
-              =
-            </span>
-            <span className="text-md md:text-5xl font-extrabold text-[#2a597e]">
-              {String(invoiceSummary?.totalChances || 0).padStart(2, "0")}
-            </span>
-            <span className="text-[#2a597e] text-[16px] font-bold">
-              {"chances"}
-            </span>
+      <AnimatedSection delay={0.8}>
+        <section className="bg-[#3dadff]/15 p-6 py-10 ">
+          <div className="mx-auto  max-w-6xl  block md:items-center py-2 md:px-6 md:py-6 md:flex  md:justify-center px-3 ">
+            <h2 className="text-center sm:text-center text-[#2a597e] text-2xl mb-4 md:mb-0  md:text-[36px] mr-10 font-extrabold">
+              {"Ya llevás cargadas"}
+            </h2>
+            <div className="flex items-center justify-center gap-2 mx-3 md:mx-10">
+              <span className=" text-md md:text-5xl font-extrabold text-[#2a597e]">
+                {invoiceSummary?.totalUnits || 0}
+              </span>
+              <span className="text-[#2a597e] font-bold  text-[16px]">
+                {"bujías"}
+              </span>
+              <span className="mx-8 text-md md:text-5xl font-extrabold text-[#2a597e]">
+                =
+              </span>
+              <span className="text-md md:text-5xl font-extrabold text-[#2a597e]">
+                {invoiceSummary?.totalChances || 0}
+              </span>
+              <span className="text-[#2a597e] text-[16px] font-bold">
+                {"chances"}
+              </span>
+            </div>
+            <div />
           </div>
-          <div />
-        </div>
-      </section>
+        </section>
+      </AnimatedSection>
       {/* Bloque gris con CTA catálogo */}
-      <section className="bg-[#6d6d6d]  text-center flex flex-col items-center justify-center mb-14  min-h-[300px]">
-        <h4 className="text-white text-[36px]  font-extrabold">
-          {"Más compras, más chances. Sin vueltas."}
-        </h4>
-        <div className="mt-6">
-          <Button
-            variant="outline"
-            className="rounded-full h-[70px] w-[200px] bg-white text-[#2a597e] font-bold  text-[18px] border-transparent hover:bg-white/90 px-6"
-          >
-            {"Ver catálogo"}
-          </Button>
-        </div>
-      </section>
+      <AnimatedSection delay={0.8}>
+        <section className="bg-[#6d6d6d]  text-center flex flex-col items-center justify-center  min-h-[300px]">
+          <h4 className="text-white text-[36px]  font-extrabold">
+            {"Más compras, más chances. Sin vueltas."}
+          </h4>
+          <div className="mt-6">
+            <Button
+              variant="outline"
+              className="rounded-full h-[70px] w-[200px] bg-white text-[#2a597e] font-bold  text-[18px] border-transparent hover:bg-white/90 px-6"
+            >
+              {"Ver catálogo"}
+            </Button>
+          </div>
+        </section>
+      </AnimatedSection>
       <Footer />
     </main>
   );

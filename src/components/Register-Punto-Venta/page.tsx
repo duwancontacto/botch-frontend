@@ -13,6 +13,7 @@ import {
 } from "@/lib/schemas/auth-schemas";
 import { Distributor } from "@/lib/types/api-types";
 import { Loader2 } from "lucide-react";
+import { AnimatedSection } from "@/components/ui/animated-section";
 
 interface FormularioPuntoDeVentaProps {
   onRegistrationSuccess: () => void;
@@ -76,156 +77,172 @@ export default function FormularioPuntoDeVenta({
       className="space-y-7 text-[#2a597e]"
     >
       {/* Dos columnas: Nombre y apellido / Nombre fantasía */}
-      <div className="grid gap-6 md:grid-cols-2">
-        <FormField
-          label="Nombre y apellido"
-          id="fullName"
-          labelClassName="font-bold"
-          required
-          error={errors.fullName?.message}
-          {...register("fullName")}
-        />
-        <FormField
-          label="Nombre fantasía"
-          id="fantasyName"
-          labelClassName="font-bold"
-          required
-          error={errors.fantasyName?.message}
-          {...register("fantasyName")}
-        />
-      </div>
+      <AnimatedSection delay={0.2}>
+        <div className="grid gap-6 md:grid-cols-2">
+          <FormField
+            label="Nombre y apellido"
+            id="fullName"
+            labelClassName="font-bold"
+            required
+            error={errors.fullName?.message}
+            {...register("fullName")}
+          />
+          <FormField
+            label="Nombre fantasía"
+            id="fantasyName"
+            labelClassName="font-bold"
+            required
+            error={errors.fantasyName?.message}
+            {...register("fantasyName")}
+          />
+        </div>
+      </AnimatedSection>
 
       {/* Razón social / CUIT */}
-      <div className="grid gap-6 md:grid-cols-2">
-        <FormField
-          label="Razón social"
-          id="socialReason"
-          labelClassName="font-bold"
-          required
-          error={errors.socialReason?.message}
-          {...register("socialReason")}
-        />
-        <FormField
-          label="CUIT"
-          id="cuit"
-          labelClassName="font-bold"
-          //placeholder="XX-XXXXXXXX-X"
-          required
-          error={errors.cuit?.message}
-          {...register("cuit")}
-        />
-      </div>
+      <AnimatedSection delay={0.4}>
+        <div className="grid gap-6 md:grid-cols-2">
+          <FormField
+            label="Razón social"
+            id="socialReason"
+            labelClassName="font-bold"
+            required
+            error={errors.socialReason?.message}
+            {...register("socialReason")}
+          />
+          <FormField
+            label="CUIT"
+            id="cuit"
+            labelClassName="font-bold"
+            //placeholder="XX-XXXXXXXX-X"
+            required
+            error={errors.cuit?.message}
+            {...register("cuit")}
+          />
+        </div>
+      </AnimatedSection>
 
       {/* Distribuidor habitual (Select) - Obligatorio */}
-      <div>
-        <FormSelect
-          label="Distribuidor habitual"
-          id="habitualDistributorId"
-          labelClassName="font-bold"
-          placeholder="Seleccionar..."
-          required
-          options={distributorOptions}
-          value={habitualDistributorId}
-          onValueChange={(value) => setValue("habitualDistributorId", value)}
-          error={errors.habitualDistributorId?.message}
-        />
-        {isLoadingDistributors && (
-          <div className="flex items-center gap-2 mt-2 text-sm text-[#2a597e]/70">
-            <Loader2 className="h-4 w-4 animate-spin" />
-            Cargando distribuidores...
-          </div>
-        )}
-      </div>
+      <AnimatedSection delay={0.6}>
+        <div>
+          <FormSelect
+            label="Distribuidor habitual"
+            id="habitualDistributorId"
+            labelClassName="font-bold"
+            placeholder="Seleccionar..."
+            required
+            options={distributorOptions}
+            value={habitualDistributorId}
+            onValueChange={(value) => setValue("habitualDistributorId", value)}
+            error={errors.habitualDistributorId?.message}
+          />
+          {isLoadingDistributors && (
+            <div className="flex items-center gap-2 mt-2 text-sm text-[#2a597e]/70">
+              <Loader2 className="h-4 w-4 animate-spin" />
+              Cargando distribuidores...
+            </div>
+          )}
+        </div>
+      </AnimatedSection>
 
       {/* Teléfono / Mail */}
-      <div className="grid gap-6 md:grid-cols-2">
-        <FormField
-          label="Teléfono"
-          id="phone"
-          labelClassName="font-bold"
-          required
-          error={errors.phone?.message}
-          {...register("phone")}
-        />
-        <FormField
-          label="Mail"
-          id="email"
-          type="email"
-          labelClassName="font-bold"
-          required
-          error={errors.email?.message}
-          {...register("email")}
-        />
-      </div>
+      <AnimatedSection delay={0.8}>
+        <div className="grid gap-6 md:grid-cols-2">
+          <FormField
+            label="Teléfono"
+            id="phone"
+            labelClassName="font-bold"
+            required
+            error={errors.phone?.message}
+            {...register("phone")}
+          />
+          <FormField
+            label="Mail"
+            id="email"
+            type="email"
+            labelClassName="font-bold"
+            required
+            error={errors.email?.message}
+            {...register("email")}
+          />
+        </div>
+      </AnimatedSection>
 
       {/* Dirección / Localidad / Provincia */}
-      <div className="grid gap-6 md:grid-cols-3">
-        <FormField
-          label="Dirección"
-          id="address"
-          labelClassName="font-bold"
-          required
-          error={errors.address?.message}
-          {...register("address")}
-        />
-        <FormField
-          label="Localidad"
-          id="city"
-          labelClassName="font-bold"
-          required
-          error={errors.city?.message}
-          {...register("city")}
-        />
-        <FormField
-          label="Provincia"
-          id="province"
-          labelClassName="font-bold"
-          required
-          error={errors.province?.message}
-          {...register("province")}
-        />
-      </div>
+      <AnimatedSection delay={1.0}>
+        <div className="grid gap-6 md:grid-cols-3">
+          <FormField
+            label="Dirección"
+            id="address"
+            labelClassName="font-bold"
+            required
+            error={errors.address?.message}
+            {...register("address")}
+          />
+          <FormField
+            label="Localidad"
+            id="city"
+            labelClassName="font-bold"
+            required
+            error={errors.city?.message}
+            {...register("city")}
+          />
+          <FormField
+            label="Provincia"
+            id="province"
+            labelClassName="font-bold"
+            required
+            error={errors.province?.message}
+            {...register("province")}
+          />
+        </div>
+      </AnimatedSection>
 
       {/* Passwords */}
-      <div className="grid gap-6 md:grid-cols-2">
-        <FormField
-          label="Contraseña"
-          id="password"
-          type="password"
-          labelClassName="font-bold"
-          required
-          error={errors.password?.message}
-          {...register("password")}
-        />
-        <FormField
-          label="Repetir contraseña"
-          id="passwordConfirm"
-          type="password"
-          labelClassName="font-bold"
-          required
-          error={errors.passwordConfirm?.message}
-          {...register("passwordConfirm")}
-        />
-      </div>
+      <AnimatedSection delay={1.2}>
+        <div className="grid gap-6 md:grid-cols-2">
+          <FormField
+            label="Contraseña"
+            id="password"
+            type="password"
+            labelClassName="font-bold"
+            required
+            error={errors.password?.message}
+            {...register("password")}
+          />
+          <FormField
+            label="Repetir contraseña"
+            id="passwordConfirm"
+            type="password"
+            labelClassName="font-bold"
+            required
+            error={errors.passwordConfirm?.message}
+            {...register("passwordConfirm")}
+          />
+        </div>
+      </AnimatedSection>
 
-      <span className="text-[18px]">Todos los campos son obligatorios *</span>
+      <AnimatedSection delay={1.4}>
+        <span className="text-[18px]">Todos los campos son obligatorios *</span>
+      </AnimatedSection>
 
-      <div className="pt-6">
-        <Button
-          type="submit"
-          disabled={isSubmitting || registerMutation.isPending}
-          className="rounded-full bg-[#2a597e] px-15 py-6 text-white hover:bg-[#2a597e]/90 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          {isSubmitting || registerMutation.isPending ? (
-            <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Enviando...
-            </>
-          ) : (
-            "Enviar"
-          )}
-        </Button>
-      </div>
+      <AnimatedSection delay={1.6}>
+        <div className="pt-6">
+          <Button
+            type="submit"
+            disabled={isSubmitting || registerMutation.isPending}
+            className="rounded-full bg-[#2a597e] px-15 py-6 text-white hover:bg-[#2a597e]/90 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isSubmitting || registerMutation.isPending ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Enviando...
+              </>
+            ) : (
+              "Enviar"
+            )}
+          </Button>
+        </div>
+      </AnimatedSection>
     </form>
   );
 }
