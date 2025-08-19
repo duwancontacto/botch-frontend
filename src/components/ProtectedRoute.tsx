@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useAuth } from "store/useAuth";
 
 interface ProtectedRouteProps {
@@ -15,6 +15,7 @@ export default function ProtectedRoute({
 }: ProtectedRouteProps) {
   const { isAuthenticated, user, _hasHydrated } = useAuth();
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     if (!_hasHydrated) {
@@ -26,9 +27,14 @@ export default function ProtectedRoute({
       return;
     }
 
+    // Si la ruta es contact-form, no redirigir
+    if (pathname === "/contact-form") {
+      return;
+    }
+
     router.push("/dashboard");
     return;
-  }, [isAuthenticated, user, requiredUserType, router, _hasHydrated]);
+  }, [isAuthenticated, user, requiredUserType, router, _hasHydrated, pathname]);
 
   // Mostrar loading mientras se verifica la autenticación
   if (!isAuthenticated || !user) {

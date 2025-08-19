@@ -17,7 +17,7 @@ export default function Header() {
       <div className="flex items-center gap-2 sm:gap-3 text-white px-3  ">
         <div
           onClick={() => router.push("/dashboard")}
-          className="relative w-[100px] md:w-[160px] h-[20px] md:h-[33px]"
+          className="relative cursor-pointer w-[100px] md:w-[160px] h-[20px] md:h-[33px]"
         >
           <Image
             src={logoImage}
