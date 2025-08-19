@@ -7,6 +7,7 @@ import { useAuth } from "store/useAuth";
 import { useState, useEffect } from "react";
 import ConfettiExplosion from "react-confetti-explosion";
 import { AnimatedSection } from "@/components/ui/animated-section";
+import Header from "../Header";
 
 export default function SuccessDistributor({
   setIsSuccess,
@@ -70,36 +71,7 @@ export default function SuccessDistributor({
       />
 
       <AnimatedSection delay={0.2}>
-        <div className="absolute inset-x-0 top-4 sm:top-6 block md:flex md:justify-between px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 w-full">
-          <div className="flex items-center gap-2 sm:gap-3 text-white px-3  ">
-            <div className="relative w-[160px] h-[33px]">
-              <Image
-                src={logoImage}
-                alt="Logo Bosch"
-                fill
-                className="object-cover"
-                priority
-                quality={100}
-              />
-            </div>
-          </div>
-          <div className="ml-auto flex items-center justify-content-between mt-5 md:mt-0 ">
-            <Button
-              variant="outline"
-              className="rounded-full bg-white/90 border-transparent text-[#2a597e] hover:bg-white h-14  w-[136px] mx-3 md:mx-10 my-3 cursor-pointer  font-bold"
-              asChild
-            >
-              <Link href="/contact-form">Contacto</Link>
-            </Button>
-            <Button
-              variant="outline"
-              className="rounded-full bg-white  border-white lg:ml-10 text-[#2a597e]  h-14  w-[136px]  text-sm md:text-base font-bold cursor-pointer"
-              onClick={handleLogout}
-            >
-              Cerrar sesión
-            </Button>
-          </div>
-        </div>
+        <Header />
       </AnimatedSection>
 
       {/* Contenido centrado */}

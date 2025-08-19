@@ -32,6 +32,7 @@ import { Loader2 } from "lucide-react";
 import SuccessPuntoVenta from "./SuccessPuntoVenta";
 import { useState } from "react";
 import { AnimatedSection } from "@/components/ui/animated-section";
+import Header from "../Header";
 
 export default function DashboardPuntoVenta() {
   const { logout } = useAuth();
@@ -126,37 +127,7 @@ export default function DashboardPuntoVenta() {
               />
               {/* Topbar */}
 
-              <div className="absolute inset-x-0 top-4 sm:top-6 block md:flex md:justify-between px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 w-full">
-                <div className="flex items-center gap-2 sm:gap-3 text-white px-3  ">
-                  <div className="relative w-[160px] h-[33px]">
-                    <Image
-                      src={logoImage}
-                      alt="Logo Bosch"
-                      fill
-                      className="object-cover"
-                      priority
-                      quality={100}
-                    />
-                  </div>
-                </div>
-
-                <div className="block md:flex-row flex-col items-end justify-end gap-2 sm:gap-3 z-20">
-                  <Button
-                    variant="outline"
-                    className="rounded-full border-2 border-white  bg-white  text-[#2a597e] h-14  w-[136px] mx-3 my-3 cursor-pointer md:my-0  text-sm md:text-base font-bold"
-                    asChild
-                  >
-                    <Link href="/contact-form">Contacto</Link>
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="rounded-full bg-white  border-white lg:ml-10 text-[#2a597e]  h-14  w-[136px]  text-sm md:text-base font-bold cursor-pointer"
-                    onClick={handleLogout}
-                  >
-                    Cerrar sesión
-                  </Button>
-                </div>
-              </div>
+              <Header />
 
               <div className=" absolute z-10  flex items-end justify-end text-end md:h-full  w-full  py-40 md:py-30 px-4 md:px-20 ">
                 <AnimatedSection delay={0.2}>
@@ -193,7 +164,7 @@ export default function DashboardPuntoVenta() {
           <AnimatedSection delay={0.4}>
             <section className="bg-[#3dadff]/15 p-6 py-10 ">
               <div className="mx-auto  max-w-6xl  block md:items-center py-2 md:px-6 md:py-6 md:flex  md:justify-center px-3 ">
-                <h2 className="text-center sm:text-center text-[#2a597e] text-2xl mb-5 md:mb-0 md:text-[36px] mr-10 font-extrabold">
+                <h2 className="text-center sm:text-center text-[#2a597e] text-2xl mb-5 md:mb-0 md:text-[36px] mr-0 md:mr-10 font-extrabold">
                   {"Ya llevás cargadas"}
                 </h2>
                 <div className="flex items-center justify-center gap-2 mx-3 md:mx-10">
@@ -431,13 +402,13 @@ export default function DashboardPuntoVenta() {
           {/* Banda inferior (CTA catálogo) */}
           <AnimatedSection delay={0.6}>
             <section className="bg-[#6d6d6d]  text-center flex flex-col items-center justify-center   min-h-[300px]">
-              <h4 className="text-white text-[36px]  font-extrabold">
+              <h4 className="text-white text-xl md:text-[36px]  font-extrabold">
                 {"Más compras, más chances. Sin vueltas."}
               </h4>
               <div className="mt-6">
                 <Button
                   variant="outline"
-                  className="rounded-full h-[70px] w-[200px] bg-white text-[#2a597e] font-bold  text-[18px] border-transparent hover:bg-white/90 px-6"
+                  className="rounded-full h-12 md:h-[70px] w-[150px] md:w-[200px] bg-white text-[#2a597e] font-bold  text-[14px] md:text-[18px] border-transparent hover:bg-white/90 px-6"
                 >
                   {"Ver catálogo"}
                 </Button>

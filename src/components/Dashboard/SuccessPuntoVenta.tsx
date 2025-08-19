@@ -10,6 +10,7 @@ import { InvoiceSummary } from "@/lib/types/api-types";
 import { useState, useEffect } from "react";
 import ConfettiExplosion from "react-confetti-explosion";
 import { AnimatedSection } from "@/components/ui/animated-section";
+import Header from "../Header";
 
 export default function SuccessPuntoVenta({
   setIsSuccess,
@@ -77,39 +78,10 @@ export default function SuccessPuntoVenta({
           />
         </div>
         <AnimatedSection delay={0.2}>
-          <div className="relative z-10  mx-auto block md:flex md:items-start md:justify-between gap-6 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 pt-10">
-            <div className="flex items-center gap-2 sm:gap-3 text-white px-3  ">
-              <div className="relative w-[160px] h-[33px]">
-                <Image
-                  src={logoImage}
-                  alt="Logo Bosch"
-                  fill
-                  className="object-cover"
-                  priority
-                  quality={100}
-                />
-              </div>
-            </div>
-            <div className="block md:flex-row flex-col items-end justify-end gap-2 sm:gap-3 z-20">
-              <Button
-                variant="outline"
-                className="rounded-full border-2 border-white  bg-white  text-[#2a597e] h-14  w-[136px] mx-3 my-3 cursor-pointer md:my-0  text-sm md:text-base font-bold"
-                asChild
-              >
-                <Link href="/contact-form">Contacto</Link>
-              </Button>
-              <Button
-                variant="outline"
-                className="rounded-full bg-white  border-white lg:ml-10 text-[#2a597e]  h-14  w-[136px]  text-sm md:text-base font-bold cursor-pointer"
-                onClick={handleLogout}
-              >
-                Cerrar sesión
-              </Button>
-            </div>
-          </div>
+          <Header />
         </AnimatedSection>
         {/* Mensaje principal */}
-        <div className="relative min-h-[600px] z-10 mx-auto flex max-w-4xl flex-col items-center justify-center px-6 py-10 text-center sm:py-20">
+        <div className="relative min-h-[650px] z-10 mx-auto flex max-w-4xl flex-col items-center justify-center px-6 py-10 text-center sm:py-20">
           <AnimatedSection delay={0.4}>
             <h1 className="text-white text-4xl md:text-[60px] font-extrabold">
               {"Ya estás participando"}
@@ -148,7 +120,7 @@ export default function SuccessPuntoVenta({
       <AnimatedSection delay={0.8}>
         <section className="bg-[#3dadff]/15 p-6 py-10 ">
           <div className="mx-auto  max-w-6xl  block md:items-center py-2 md:px-6 md:py-6 md:flex  md:justify-center px-3 ">
-            <h2 className="text-center sm:text-center text-[#2a597e] text-2xl mb-4 md:mb-0  md:text-[36px] mr-10 font-extrabold">
+            <h2 className="text-center sm:text-center text-[#2a597e] text-2xl mb-4 md:mb-0  md:text-[36px] mr-0 md:mr-10 font-extrabold">
               {"Ya llevás cargadas"}
             </h2>
             <div className="flex items-center justify-center gap-2 mx-3 md:mx-10">
@@ -174,14 +146,14 @@ export default function SuccessPuntoVenta({
       </AnimatedSection>
       {/* Bloque gris con CTA catálogo */}
       <AnimatedSection delay={0.8}>
-        <section className="bg-[#6d6d6d]  text-center flex flex-col items-center justify-center  min-h-[300px]">
-          <h4 className="text-white text-[36px]  font-extrabold">
+        <section className="bg-[#6d6d6d]  text-center flex flex-col items-center justify-center   min-h-[300px]">
+          <h4 className="text-white text-xl md:text-[36px]  font-extrabold">
             {"Más compras, más chances. Sin vueltas."}
           </h4>
           <div className="mt-6">
             <Button
               variant="outline"
-              className="rounded-full h-[70px] w-[200px] bg-white text-[#2a597e] font-bold  text-[18px] border-transparent hover:bg-white/90 px-6"
+              className="rounded-full h-12 md:h-[70px] w-[150px] md:w-[200px] bg-white text-[#2a597e] font-bold  text-[14px] md:text-[18px] border-transparent hover:bg-white/90 px-6"
             >
               {"Ver catálogo"}
             </Button>
