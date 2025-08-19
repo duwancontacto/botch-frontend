@@ -89,7 +89,7 @@ export default function SuccessDistributor({
               className="rounded-full bg-white/90 border-transparent text-[#2a597e] hover:bg-white h-14  w-[136px] mx-3 md:mx-10 my-3 cursor-pointer  font-bold"
               asChild
             >
-              <Link href="/contact">Contacto</Link>
+              <Link href="/contact-form">Contacto</Link>
             </Button>
             <Button
               variant="outline"
