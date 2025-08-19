@@ -3,20 +3,22 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import { useAuth } from "store/useAuth";
 import logoImage from "@/assets/Logo.png";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
   const { logout } = useAuth();
-
+  const router = useRouter();
   const handleLogout = () => {
-    console.log("logout");
-
     logout();
   };
 
   return (
     <div className="absolute inset-x-0 top-4 sm:top-6 flex justify-between  px-2 sm:px-6 md:px-10 lg:px-16 xl:px-20 w-full">
       <div className="flex items-center gap-2 sm:gap-3 text-white px-3  ">
-        <div className="relative w-[100px] md:w-[160px] h-[20px] md:h-[33px]">
+        <div
+          onClick={() => router.push("/dashboard")}
+          className="relative w-[100px] md:w-[160px] h-[20px] md:h-[33px]"
+        >
           <Image
             src={logoImage}
             alt="Logo Bosch"
