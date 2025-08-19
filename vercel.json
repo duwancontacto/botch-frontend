@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/contacto",
-      "destination": "/contacto"
+      "source": "/contact",
+      "destination": "/contact"
     }
   ],
   "headers": [

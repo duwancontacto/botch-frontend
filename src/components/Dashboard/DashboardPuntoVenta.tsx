@@ -146,7 +146,7 @@ export default function DashboardPuntoVenta() {
                     className="rounded-full border-2 border-white  bg-white  text-[#2a597e] h-14  w-[136px] mx-3 my-3 cursor-pointer md:my-0  text-sm md:text-base font-bold"
                     asChild
                   >
-                    <Link href="/contacto">Contacto</Link>
+                    <Link href="/contact">Contacto</Link>
                   </Button>
                   <Button
                     variant="outline"
