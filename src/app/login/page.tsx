@@ -44,7 +44,7 @@ export default function LoginPage() {
               // Contenido para Punto de Venta
               <div className="z-10 px-20   lg:px-0 md:mx-14 my-5 md:my-24 text-[#2a597e] max-w-2xl ">
                 <AnimatedSection delay={0.2}>
-                  <h1 className="text-4xl md:text-5xl lg:text-[47px] xl:text-7xl leading-tight font-bold">
+                  <h1 className="text-4xl md:text-5xl lg:text-[47px] xl:text-7xl leading-tight xl:leading-[70px] font-bold">
                     {"Tu confianza"}
                     <br />
                     {"tiene premio."}
