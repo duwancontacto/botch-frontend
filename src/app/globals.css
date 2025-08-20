@@ -1,5 +1,29 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "BoschSans";
+  src: url("../assets/fonts/BoschSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BoschSans";
+  src: url("../assets/fonts/BoschSans-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BoschSans";
+  src: url("../assets/fonts/BoschSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -20,5 +44,5 @@
 
 body {
   color: var(--foreground);
-  font-family: var(--font-bosch-sans), Arial, Helvetica, sans-serif;
+  font-family: "BoschSans", Arial, Helvetica, sans-serif;
 }
