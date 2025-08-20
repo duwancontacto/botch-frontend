@@ -9,6 +9,7 @@ import { AnimatedSection } from "@/components/ui/animated-section";
 
 export default function LoginPage() {
   const { userType } = useUserType();
+  console.log("userType", userType);
 
   return (
     <AuthRedirect>

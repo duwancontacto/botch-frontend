@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "store/useAuth";
+import { useUserType } from "store/useUserType";
 
 interface AuthRedirectProps {
   children: React.ReactNode;
@@ -10,11 +11,12 @@ interface AuthRedirectProps {
 
 export default function AuthRedirect({ children }: AuthRedirectProps) {
   const { isAuthenticated, user, _hasHydrated } = useAuth();
+  const { _hasHydrated: userTypeHasHydrated } = useUserType();
   const router = useRouter();
   const [isRedirecting, setIsRedirecting] = useState(false);
 
   useEffect(() => {
-    if (!_hasHydrated) {
+    if (!_hasHydrated || !userTypeHasHydrated) {
       return;
     }
 
@@ -23,10 +25,17 @@ export default function AuthRedirect({ children }: AuthRedirectProps) {
       setIsRedirecting(true);
       router.push("/dashboard");
     }
-  }, [isAuthenticated, user, _hasHydrated, router, isRedirecting]);
+  }, [
+    isAuthenticated,
+    user,
+    _hasHydrated,
+    router,
+    isRedirecting,
+    userTypeHasHydrated,
+  ]);
 
   // Mostrar loading mientras se verifica la hidratación
-  if (!_hasHydrated) {
+  if (!_hasHydrated || !userTypeHasHydrated) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">

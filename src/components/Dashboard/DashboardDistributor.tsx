@@ -98,7 +98,7 @@ export default function DashboardDistributor() {
     <ProtectedRoute requiredUserType="distributor">
       <main className="relative min-h-screen bg-white">
         {/* HERO superior con imagen y navegación */}
-        <section className="relative  h-64 sm:h-[400px] lg:h-[520px]">
+        <section className="relative  h-64 sm:h-[400px] lg:h-[400px]">
           <div className="relative h-full block md:flex ">
             <Image
               src={backgroundImage}

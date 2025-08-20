@@ -7,12 +7,10 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useLoginMutation } from "@/lib/hooks/use-auth-mutations";
 import { useAuth } from "store/useAuth";
-import { useUserType } from "store/useUserType";
 import Link from "next/link";
 import { AnimatedSection } from "@/components/ui/animated-section";
 
 export default function LoginForm() {
-  const { userType } = useUserType();
   const { error, clearError } = useAuth();
   const loginMutation = useLoginMutation();
 
