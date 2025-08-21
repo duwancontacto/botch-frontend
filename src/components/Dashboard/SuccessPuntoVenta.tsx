@@ -1,10 +1,8 @@
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import logoImage from "@/assets/Logo.png";
 
 import Footer from "@/components/Footer";
 import Image from "next/image";
-import backgroundImage from "@/assets/Fondo-Confirmacion.png";
+import backgroundImage from "@/assets/FondoFinishRegister.webp";
 import { useAuth } from "store/useAuth";
 import { InvoiceSummary } from "@/lib/types/api-types";
 import { useState, useEffect } from "react";
@@ -118,25 +116,25 @@ export default function SuccessPuntoVenta({
       </section>
       {/* Franja de contadores (azul claro) */}
       <AnimatedSection delay={0.8}>
-        <section className="bg-[#3dadff]/15 p-6 py-10 ">
+        <section className="bg-[#3dadff]/15 p-6 py-4 md:py-10">
           <div className="mx-auto  max-w-6xl  block md:items-center py-2 md:px-6 md:py-6 md:flex  md:justify-center px-3 ">
-            <h2 className="text-center sm:text-center text-[#2a597e] text-2xl mb-4 md:mb-0  md:text-[36px] mr-0 md:mr-10 font-extrabold">
+            <h2 className="text-center sm:text-center text-[#2a597e] text-md  mb-2 md:mb-0 md:text-[36px] mr-0 md:mr-10 font-extrabold">
               {"Ya llevás cargadas"}
             </h2>
             <div className="flex items-center justify-center gap-2 mx-3 md:mx-10">
-              <span className=" text-md md:text-5xl font-extrabold text-[#2a597e]">
+              <span className=" text-2xl md:text-5xl font-extrabold text-[#2a597e]">
                 {invoiceSummary?.totalUnits || 0}
               </span>
-              <span className="text-[#2a597e] font-bold  text-[16px]">
+              <span className="text-[#2a597e] font-bold  text-[10px] md:text-[16px]">
                 {"bujías"}
               </span>
-              <span className="mx-8 text-md md:text-5xl font-extrabold text-[#2a597e]">
+              <span className="mx-4 md:mx-8 text-2xl md:text-5xl font-extrabold text-[#2a597e]">
                 =
               </span>
-              <span className="text-md md:text-5xl font-extrabold text-[#2a597e]">
+              <span className="text-2xl md:text-5xl font-extrabold text-[#2a597e]">
                 {invoiceSummary?.totalChances || 0}
               </span>
-              <span className="text-[#2a597e] text-[16px] font-bold">
+              <span className="text-[#2a597e] font-bold  text-[10px] md:text-[16px]">
                 {"chances"}
               </span>
             </div>

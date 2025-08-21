@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -14,8 +13,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Download, Loader2 } from "lucide-react";
 import Image from "next/image";
-import backgroundImage from "@/assets/FondoDataDistribuidor.png";
-import logoImage from "@/assets/Logo.png";
+import backgroundImage from "@/assets/FondoDataDistribuidor.webp";
 import Footer from "@/components/Footer";
 import Icon from "@/assets/circulo-select.png";
 import ProtectedRoute from "@/components/ProtectedRoute";
@@ -46,6 +44,16 @@ export default function DashboardDistributor() {
       return String(error.message);
     }
     return "Error desconocido";
+  };
+
+  // Función para descargar el archivo Excel
+  const handleDownloadReport = () => {
+    const link = document.createElement("a");
+    link.href = "/reporte-campaña-bujías-dist.xlsx";
+    link.download = "reporte-campaña-bujías-dist.xlsx";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const {
@@ -90,7 +98,7 @@ export default function DashboardDistributor() {
     reset();
   };
 
-  if (isSuccess) {
+  if (!isSuccess) {
     return <SuccessDistributor setIsSuccess={handleSuccess} />;
   }
 
@@ -124,16 +132,16 @@ export default function DashboardDistributor() {
 
           {/* Link de descarga */}
           <AnimatedSection delay={0.6}>
-            <div className="mt-6">
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 text-[#2a597e] text-sm md:text-[18px]  hover:opacity-90 font-bold sm:text-lg"
+            <div className="mt-6 ">
+              <Button
+                onClick={handleDownloadReport}
+                className="inline-flex cursor-pointer p-0 items-center gap-2 text-[#2a597e] text-sm md:text-[18px]  hover:opacity-90 font-bold sm:text-lg"
               >
                 <span className="underline">
                   {"Descargá el reporte para completar con tus ventas"}
                 </span>
                 <Download className="size-5 font-bold" />
-              </a>
+              </Button>
             </div>
           </AnimatedSection>
 
@@ -159,7 +167,7 @@ export default function DashboardDistributor() {
                   <Select
                     onValueChange={(value) => setValue("distributorId", value)}
                   >
-                    <SelectTrigger className="mt-2 h-12 rounded-full bg-white text-[#6D6D6D] border-[#2a597e]">
+                    <SelectTrigger className="mt-2 h-14 px-6 rounded-full bg-white text-[#6D6D6D] border-[#2a597e]">
                       <SelectValue placeholder="Seleccionar distribuidor..." />
                     </SelectTrigger>
                     <SelectContent className="text-[#6D6D6D] text-[18px] border-0 bg-white">
@@ -194,9 +202,9 @@ export default function DashboardDistributor() {
                       placeholder={
                         watchedFile ? watchedFile.name : "Adjuntar documento"
                       }
-                      className="h-12 w-full rounded-full border-[#2a597e] placeholder:text-[#6D6D6D]/60 focus-visible:ring-0 pr-12"
+                      className="h-14 px-6 w-full rounded-full border-[#2a597e] placeholder:text-[#6D6D6D]/60 focus-visible:ring-0 pr-12"
                     />
-                    <label className="absolute right-2 top-1/2 -translate-y-1/2">
+                    <label className="absolute right-4 top-1/2 -translate-y-1/2">
                       <input
                         type="file"
                         className="sr-only"
@@ -204,7 +212,7 @@ export default function DashboardDistributor() {
                         accept=".xlsx,.xls,.csv"
                       />
                       <span className="grid size-8 place-items-center rounded-full text-[#6D6D6D] hover:bg-[#2a597e]/10 cursor-pointer bg-white">
-                        <Image src={Icon} alt="Upload" width={20} height={20} />
+                        <Image src={Icon} alt="Upload" width={24} height={24} />
                       </span>
                     </label>
                   </div>

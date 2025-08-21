@@ -1,8 +1,6 @@
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import backgroundImage from "@/assets/FondoFinishRegister.png";
-import logoImage from "@/assets/Logo.png";
+import backgroundImage from "@/assets/FondoFinishRegister.webp";
 import { useAuth } from "store/useAuth";
 import { useState, useEffect } from "react";
 import ConfettiExplosion from "react-confetti-explosion";

@@ -64,8 +64,8 @@ export default function LoginForm() {
       className="w-full sm:max-w-lg md:max-w-xl mx-auto"
     >
       <AnimatedSection delay={0.2}>
-        <h2 className="text-3xl lg:text-4xl font-extrabold text-[#2a597e]">
-          {"Inicia sesión"}
+        <h2 className="text-2xl lg:text-3xl font-extrabold text-[#2a597e]">
+          {"Iniciá sesión"}
         </h2>
       </AnimatedSection>
 
@@ -80,7 +80,10 @@ export default function LoginForm() {
       <div className="mt-6 sm:mt-8 space-y-4 sm:space-y-6">
         <AnimatedSection delay={0.4}>
           <div className="space-y-2">
-            <Label htmlFor="email" className="text-[#2A597E] text-[20px]">
+            <Label
+              htmlFor="email"
+              className="text-[#2A597E] text-base md:text-[20px]"
+            >
               {"Email"}
             </Label>
             <Input
@@ -89,7 +92,7 @@ export default function LoginForm() {
               type="email"
               value={formData.email}
               onChange={handleInputChange}
-              className="h-12 rounded-full border-1 border-[#2A597E] bg-white text-[#2a597e] focus-visible:ring-0 text-sm sm:text-base"
+              className="h-10 md:h-14 px-6 rounded-full border-1 border-[#2A597E] bg-white text-[#2a597e] focus-visible:ring-0 text-sm sm:text-base"
               ///placeholder="tu@email.com"
               required
             />
@@ -98,7 +101,10 @@ export default function LoginForm() {
 
         <AnimatedSection delay={0.6}>
           <div className="space-y-2">
-            <Label htmlFor="password" className="text-[#2A597E] text-[20px]">
+            <Label
+              htmlFor="password"
+              className="text-[#2A597E] text-base md:text-[20px]"
+            >
               {"Contraseña"}
             </Label>
             <Input
@@ -107,7 +113,7 @@ export default function LoginForm() {
               name="password"
               value={formData.password}
               onChange={handleInputChange}
-              className="h-12 rounded-full border-1 border-[#2a597e] bg-white text-[#2a597e] focus-visible:ring-0 text-sm sm:text-base"
+              className="h-10 md:h-14 px-6 rounded-full border-1 border-[#2a597e] bg-white text-[#2a597e] focus-visible:ring-0 text-sm sm:text-base"
               ///placeholder="••••••••"
               required
             />
@@ -123,14 +129,17 @@ export default function LoginForm() {
               onCheckedChange={handleCheckboxChange}
               className="border-[#2a597e] data-[state=checked]:bg-[#2a597e] rounded-full w-[24px] h-[24px]"
             />
-            <Label htmlFor="keepSession" className="cursor-pointer text-[16px]">
+            <Label
+              htmlFor="keepSession"
+              className="cursor-pointer text-sm md:text-[15px]"
+            >
               {"Mantener sesión iniciada."}
             </Label>
           </div>
         </AnimatedSection>
 
         <AnimatedSection delay={1.0}>
-          <p className="mt-0 text-[#2a597e] text-[15px] text-left">
+          <p className="mt-0 text-[#2a597e] text-sm md:text-[15px] text-left">
             {"¿Todavía no tenés cuenta? "}
             <Link href="/register" className="font-extrabold text-[#2a597e]">
               {"Registrate ahora."}
@@ -143,7 +152,7 @@ export default function LoginForm() {
             <Button
               type="submit"
               disabled={loginMutation.isPending}
-              className="rounded-full w-[120px] cursor-pointer bg-[#2a597e] px-10 py-4 sm:py-5 md:py-6 font-bold text-white hover:bg-[#2a597e]/90 text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed"
+              className="rounded-full w-[120px] cursor-pointer bg-[#2a597e] px-10 py-4 sm:py-5 md:py-6 font-bold text-white hover:bg-[#2a597e]/90 text-sm  disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {"Entrar"}
             </Button>

@@ -45,7 +45,7 @@ const FormSelect = forwardRef<HTMLButtonElement, FormSelectProps>(
         <Label
           htmlFor={id}
           className={cn(
-            "text-[#2a597e]",
+            "text-[#0D385E]",
             labelClassName,
             required && "after:content-['*'] after:ml-1 after:text-red-500"
           )}
@@ -56,13 +56,13 @@ const FormSelect = forwardRef<HTMLButtonElement, FormSelectProps>(
           <SelectTrigger
             ref={ref}
             className={cn(
-              "mt-2 h-12 rounded-full border-[#2a597e] text-[#2a597e] focus-visible:ring-0",
+              "mt-2 h-14 px-6  rounded-full border-[#2A597E] text-[#0D385E] focus-visible:ring-0",
               error && "border-red-500 focus-visible:ring-red-500"
             )}
           >
             <SelectValue placeholder={placeholder} />
           </SelectTrigger>
-          <SelectContent className="text-[#2a597e] bg-[#FFF] border-0 cursor-pointer">
+          <SelectContent className="text-[#0D385E] bg-[#FFF] border-0 cursor-pointer ">
             {options.map((option) => (
               <SelectItem key={option.value} value={option.value}>
                 {option.label}

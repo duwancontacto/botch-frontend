@@ -49,7 +49,7 @@ const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
           type={type}
           placeholder={placeholder}
           className={cn(
-            "mt-2 h-12 rounded-full border-[#2a597e] text-[#2a597e] placeholder:text-[#2a597e]/50 focus-visible:ring-0",
+            "mt-2 h-14 px-6 rounded-full border-[#2a597e] text-[#2a597e] placeholder:text-[#2a597e]/50 focus-visible:ring-0",
             error && "border-red-500 focus-visible:ring-red-500"
           )}
           {...props}

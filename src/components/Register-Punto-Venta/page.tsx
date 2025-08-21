@@ -226,11 +226,11 @@ export default function FormularioPuntoDeVenta({
       </AnimatedSection>
 
       <AnimatedSection delay={1.6}>
-        <div className="pt-6">
+        <div className="pt-4">
           <Button
             type="submit"
             disabled={isSubmitting || registerMutation.isPending}
-            className="rounded-full bg-[#2a597e] px-15 py-6 text-white hover:bg-[#2a597e]/90 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+            className="rounded-full bg-[#2a597e] font-semibold  text-[18px] h-[70px] w-[154px] text-white hover:bg-[#2a597e]/90 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting || registerMutation.isPending ? (
               <>

@@ -1,11 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import logoImage from "@/assets/Logo.png";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -17,7 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Image from "next/image";
-import backgroundImage from "@/assets/FondoDataPuntoVenta.png";
+import backgroundImage from "@/assets/FondoDataPuntoVenta.webp";
 import Footer from "@/components/Footer";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import { useAuth } from "store/useAuth";
@@ -116,7 +114,7 @@ export default function DashboardPuntoVenta() {
         />
       ) : (
         <main className="min-h-screen h-full bg-white">
-          <section className="relative h-64 sm:h-[400px] lg:h-[480px] ">
+          <section className="relative h-64 md:h-[400px] lg:h-[480px] ">
             <div className="relative h-full block md:flex">
               <Image
                 src={backgroundImage}
@@ -129,14 +127,14 @@ export default function DashboardPuntoVenta() {
 
               <Header />
 
-              <div className=" absolute z-10  flex items-end justify-end text-end md:h-full  w-full  py-40 md:py-30 px-4 md:px-20 ">
+              <div className=" absolute z-10  flex items-end justify-end text-end md:h-full  w-full  py-30 px-6 md:px-20 ">
                 <AnimatedSection delay={0.2}>
-                  <p className="text-[#2a597e] text-[20px] md:text-3xl lg:text-[60px] lg:leading-[60px]  font-bold   ">
+                  <p className="text-[#0D385E] text-[20px] md:text-3xl lg:text-[60px] leading-[20px] md:leading-[30px] lg:leading-[60px]  font-bold   ">
                     {"¿Te imaginás arriba"}
                     <br />
                     {"de tu próxima moto?"}
                   </p>{" "}
-                  <p className="mt-3 text-[#2a597e] text-sm font-semibold  lg:text-[36px]">
+                  <p className="mt-2 md:mt-3 text-[#0D385E] text-[12px] md:text-sm font-semibold  lg:text-[36px]">
                     {"Estás más cerca de lo que pensás."}
                   </p>
                 </AnimatedSection>
@@ -150,9 +148,9 @@ export default function DashboardPuntoVenta() {
                 <AnimatedSection
                   delay={0.1 + index * 0.2}
                   key={index}
-                  className="bg-transparent border border-white rounded-full p-4 text-center max-w-[220px]"
+                  className="bg-transparent flex items-center border mx-auto border-white rounded-full p-3 py-2 md:p-4 text-center max-w-[220px]"
                 >
-                  <p className="text-white text-sm md:text-base  font-medium">
+                  <p className="text-white text-sm md:text-base leading-[16px] md:leading-[15px] font-medium">
                     {nivel.title}
                   </p>
                 </AnimatedSection>
@@ -162,9 +160,9 @@ export default function DashboardPuntoVenta() {
 
           {/* Componente de opciones de puntajes */}
           <AnimatedSection delay={0.4}>
-            <section className="bg-[#3dadff]/15 p-6 py-10 ">
+            <section className="bg-[#3dadff]/15 p-6 py-4 md:py-10">
               <div className="mx-auto  max-w-6xl  block md:items-center py-2 md:px-6 md:py-6 md:flex  md:justify-center px-3 ">
-                <h2 className="text-center sm:text-center text-[#2a597e] text-2xl mb-5 md:mb-0 md:text-[36px] mr-0 md:mr-10 font-extrabold">
+                <h2 className="text-center sm:text-center text-[#2a597e] text-md  mb-2 md:mb-0 md:text-[36px] mr-0 md:mr-10 font-extrabold">
                   {"Ya llevás cargadas"}
                 </h2>
                 <div className="flex items-center justify-center gap-2 mx-3 md:mx-10">
@@ -177,19 +175,19 @@ export default function DashboardPuntoVenta() {
                     </div>
                   ) : (
                     <>
-                      <span className=" text-md md:text-5xl font-extrabold text-[#2a597e]">
+                      <span className=" text-2xl md:text-5xl font-extrabold text-[#2a597e]">
                         {invoiceSummary?.totalUnits || 0}
                       </span>
-                      <span className="text-[#2a597e] font-bold  text-[16px]">
+                      <span className="text-[#2a597e] font-bold  text-[10px] md:text-[16px]">
                         {"bujías"}
                       </span>
-                      <span className="mx-8 text-md md:text-5xl font-extrabold text-[#2a597e]">
+                      <span className="mx-4 md:mx-8 text-2xl md:text-5xl font-extrabold text-[#2a597e]">
                         =
                       </span>
-                      <span className="text-md md:text-5xl font-extrabold text-[#2a597e]">
+                      <span className="text-2xl md:text-5xl font-extrabold text-[#2a597e]">
                         {invoiceSummary?.totalChances || 0}
                       </span>
-                      <span className="text-[#2a597e] font-bold  text-[16px]">
+                      <span className="text-[#2a597e] font-bold  text-[10px] md:text-[16px]">
                         {"chances"}
                       </span>
                     </>
@@ -232,7 +230,7 @@ export default function DashboardPuntoVenta() {
                       onValueChange={handleDistribuidorChange}
                       value={watchedDistributor}
                     >
-                      <SelectTrigger className="mt-2 h-12 rounded-full  border-[#2a597e] text-[#6D6D6D] text-[16px]">
+                      <SelectTrigger className="mt-2 h-14 px-6 rounded-full  border-[#2a597e] text-[#6D6D6D] text-[16px]">
                         <SelectValue placeholder="Seleccionar..." />
                       </SelectTrigger>
                       <SelectContent className="text-[#6D6D6D] bg-white">
@@ -268,7 +266,7 @@ export default function DashboardPuntoVenta() {
                       <Input
                         {...register("otherDistributorName")}
                         placeholder="Nombre de la distribuidora..."
-                        className="mt-2 h-12 rounded-full  border-[#2a597e] text-[#2a597e] focus-visible:ring-0"
+                        className="mt-2 h-14 px-6 rounded-full  border-[#2a597e] text-[#2a597e] focus-visible:ring-0"
                       />
                       {errors.otherDistributorName && (
                         <p className="text-red-500 text-sm mt-1">
@@ -287,7 +285,7 @@ export default function DashboardPuntoVenta() {
                       min="1"
                       //placeholder="Ingresa la cantidad de bujías"
                       {...register("units")}
-                      className="mt-2 h-12 rounded-full  border-[#2a597e] text-[#2a597e] focus-visible:ring-0"
+                      className="mt-2 h-14 px-6 rounded-full  border-[#2a597e] text-[#2a597e] focus-visible:ring-0"
                     />
                     {errors.units && (
                       <p className="text-red-500 text-sm mt-1">
@@ -311,7 +309,7 @@ export default function DashboardPuntoVenta() {
                     <Input
                       id="invoiceNumber"
                       {...register("invoiceNumber")}
-                      className="mt-2 h-12 rounded-full  border-[#2a597e] text-[#2a597e] focus-visible:ring-0"
+                      className="mt-2 h-14 px-6 rounded-full  border-[#2a597e] text-[#2a597e] focus-visible:ring-0"
                     />
                     {errors.invoiceNumber && (
                       <p className="text-red-500 text-sm mt-1">
@@ -330,7 +328,7 @@ export default function DashboardPuntoVenta() {
                       id="invoiceDate"
                       type="date"
                       {...register("invoiceDate")}
-                      className="mt-2 h-12 rounded-full  border-[#2a597e] text-[#2a597e] focus-visible:ring-0"
+                      className="mt-2 h-14 px-6 rounded-full  border-[#2a597e] text-[#2a597e] focus-visible:ring-0"
                     />
                     {errors.invoiceDate && (
                       <p className="text-red-500 text-sm mt-1">

@@ -10,10 +10,15 @@ import { ContactFormData } from "@/lib/services/contact-service";
 
 interface ContactFormProps {
   onSuccess?: () => void;
+  onReset?: () => void;
   className?: string;
 }
 
-export function ContactForm({ onSuccess, className = "" }: ContactFormProps) {
+export function ContactForm({
+  onSuccess,
+  onReset,
+  className = "",
+}: ContactFormProps) {
   const [formData, setFormData] = useState<ContactFormData>({
     nombre: "",
     email: "",
@@ -56,6 +61,7 @@ export function ContactForm({ onSuccess, className = "" }: ContactFormProps) {
   const handleReset = () => {
     setFormData({ nombre: "", email: "", mensaje: "" });
     resetForm();
+    onReset?.();
   };
 
   if (isSuccess) {
@@ -86,7 +92,7 @@ export function ContactForm({ onSuccess, className = "" }: ContactFormProps) {
         </div>
         <Button
           onClick={handleReset}
-          className="rounded-full bg-[#2a597e] px-6 py-3 text-white hover:bg-[#2a597e]/90"
+          className="rounded-full cursor-pointer bg-[#2a597e] font-bold text-[15px] px-9 h-[50px] text-white hover:bg-[#2a597e]/90"
         >
           Enviar otro mensaje
         </Button>
@@ -95,7 +101,7 @@ export function ContactForm({ onSuccess, className = "" }: ContactFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className={`space-y-6 ${className}`}>
+    <form onSubmit={handleSubmit} className={`space-y-4 ${className}`}>
       {error && (
         <div className="bg-red-50 border border-red-200 rounded-lg p-4">
           <p className="text-red-600 text-sm">{error}</p>
@@ -124,7 +130,7 @@ export function ContactForm({ onSuccess, className = "" }: ContactFormProps) {
       <div>
         <Label
           htmlFor="email"
-          className="text-sm md:text-[17px] text-[#2a597e]"
+          className="text-sm  md:text-[17px] text-[#2a597e]"
         >
           Email *
         </Label>
@@ -163,7 +169,7 @@ export function ContactForm({ onSuccess, className = "" }: ContactFormProps) {
         <Button
           type="submit"
           disabled={isLoading}
-          className="rounded-full bg-[#2a597e] px-8 py-6 text-white hover:bg-[#2a597e]/90 font-bold disabled:opacity-50 disabled:cursor-not-allowed w-full"
+          className="rounded-full cursor-pointer bg-[#2a597e] px-9 h-[50px] text-white hover:bg-[#2a597e]/90 font-bold disabled:opacity-50 disabled:cursor-not-allowed "
         >
           {isLoading ? (
             <div className="flex items-center gap-2">
@@ -190,7 +196,7 @@ export function ContactForm({ onSuccess, className = "" }: ContactFormProps) {
               Enviando...
             </div>
           ) : (
-            "Enviar mensaje"
+            "Enviar"
           )}
         </Button>
       </div>

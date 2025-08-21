@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BOTCH - Registro",
+  title: "BOSCH - Registro",
   description: "Sistema de registro para distribuidores y puntos de venta",
 };
 

@@ -4,7 +4,7 @@ import { useState } from "react";
 import FormularioDistribuidor from "@/components/Register-Distribuidor/page";
 import FormularioPuntoDeVenta from "@/components/Register-Punto-Venta/page";
 import Image from "next/image";
-import backgroundImage from "@/assets/FondoRegister.png";
+import backgroundImage from "@/assets/FondoRegistro.webp";
 import backgroundFinishImage from "@/assets/FondoFinishRegister.png";
 import { UserType, useUserType } from "store/useUserType";
 import { useRouter } from "next/navigation";
@@ -72,7 +72,7 @@ export default function RegisterPage() {
               priority
             />
             <div className="relative z-10 mx-auto flex h-full max-w-5xl items-center justify-center px-6 text-center">
-              <h1 className="text-[#2a597e] text-2xl sm:text-3xl lg:text-4xl font-extrabold">
+              <h1 className="text-[#0D385E] text-2xl sm:text-3xl lg:text-4xl font-extrabold">
                 {tipo === "distributor"
                   ? "Registrate, cargá tus ventas"
                   : "Registrate, cargá tus compras"}

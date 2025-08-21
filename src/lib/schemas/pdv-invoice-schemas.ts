@@ -6,7 +6,24 @@ export const pdvInvoiceSchema = z
     habitualDistributorId: z.string().optional(),
     otherDistributorName: z.string().optional(),
     invoiceNumber: z.string().min(1, "El número de factura es obligatorio"),
-    invoiceDate: z.string().min(1, "La fecha de factura es obligatoria"),
+    invoiceDate: z
+      .string()
+      .min(1, "La fecha de factura es obligatoria")
+      .refine(
+        (date) => {
+          if (!date) return false;
+
+          const selectedDate = new Date(date);
+          const startDate = new Date("2025-09-01");
+          const endDate = new Date("2025-11-30");
+
+          return selectedDate >= startDate && selectedDate <= endDate;
+        },
+        {
+          message:
+            "Participan las compras realizadas entre septiembre y noviembre 2025",
+        }
+      ),
     units: z
       .string()
       .min(1, "La cantidad de bujías es obligatoria")
