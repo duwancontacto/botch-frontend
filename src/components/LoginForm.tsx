@@ -64,7 +64,7 @@ export default function LoginForm() {
       className="w-full sm:max-w-lg md:max-w-xl mx-auto"
     >
       <AnimatedSection delay={0.2}>
-        <h2 className="text-2xl lg:text-3xl font-extrabold text-[#2a597e]">
+        <h2 className="text-[21px] lg:text-3xl font-bold leading-[24px] tracking-[-1px] text-[#2a597e]">
           {"Iniciá sesión"}
         </h2>
       </AnimatedSection>
@@ -82,7 +82,7 @@ export default function LoginForm() {
           <div className="space-y-2">
             <Label
               htmlFor="email"
-              className="text-[#2A597E] text-base md:text-[20px]"
+              className="text-[#2A597E] text-sm md:text-[20px] tracking-[-1px]"
             >
               {"Email"}
             </Label>
@@ -103,7 +103,7 @@ export default function LoginForm() {
           <div className="space-y-2">
             <Label
               htmlFor="password"
-              className="text-[#2A597E] text-base md:text-[20px]"
+              className="text-[#2A597E] text-sm md:text-[20px] tracking-[-1px]"
             >
               {"Contraseña"}
             </Label>
@@ -131,7 +131,7 @@ export default function LoginForm() {
             />
             <Label
               htmlFor="keepSession"
-              className="cursor-pointer text-sm md:text-[15px]"
+              className="cursor-pointer text-[11px] md:text-[15px] tracking-[-0.75px]"
             >
               {"Mantener sesión iniciada."}
             </Label>
@@ -139,7 +139,7 @@ export default function LoginForm() {
         </AnimatedSection>
 
         <AnimatedSection delay={1.0}>
-          <p className="mt-0 text-[#2a597e] text-sm md:text-[15px] text-left">
+          <p className="mt-0 text-[#2a597e] text-[11px] md:text-[15px] tracking-[-0.75px] text-left">
             {"¿Todavía no tenés cuenta? "}
             <Link href="/register" className="font-extrabold text-[#2a597e]">
               {"Registrate ahora."}
@@ -152,7 +152,7 @@ export default function LoginForm() {
             <Button
               type="submit"
               disabled={loginMutation.isPending}
-              className="rounded-full w-[120px] cursor-pointer bg-[#2a597e] px-10 py-4 sm:py-5 md:py-6 font-bold text-white hover:bg-[#2a597e]/90 text-sm  disabled:opacity-50 disabled:cursor-not-allowed"
+              className="rounded-full w-[80px] md:w-[120px] cursor-pointer bg-[#2a597e] px-10 h-10 md:h-12.5 font-bold text-white hover:bg-[#2a597e]/90  text-[11px] md:text-[15px] tracking-[-0.75px]   disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {"Entrar"}
             </Button>

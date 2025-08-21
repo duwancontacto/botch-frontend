@@ -140,7 +140,9 @@ export default function FormularioDistribuidor({
       </AnimatedSection>
 
       <AnimatedSection delay={0.8}>
-        <span className="text-[18px]">Todos los campos son obligatorios *</span>
+        <span className="text-[18px] tracking-[-0.5px]">
+          Todos los campos son obligatorios *
+        </span>
       </AnimatedSection>
 
       <AnimatedSection delay={1.0}>

@@ -72,6 +72,10 @@ export default function DashboardPuntoVenta() {
     try {
       console.log("Datos del formulario:", data);
       await createPdvInvoice.mutateAsync(data);
+      scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
       setIsSuccess(true);
       refetch();
       reset();
@@ -123,12 +127,16 @@ export default function DashboardPuntoVenta() {
 
               <div className=" absolute z-10  flex items-end justify-end text-end md:h-full  w-full  py-30 px-6 md:px-20 ">
                 <AnimatedSection delay={0.2}>
-                  <p className="text-[#0D385E] text-[20px] md:text-3xl lg:text-[60px] leading-[20px] md:leading-[30px] lg:leading-[60px]  font-bold   ">
+                  <p className="text-[#0D385E] text-[20px] md:text-3xl lg:text-[60px] leading-[25px] md:leading-[30px] lg:leading-[70px]  font-extrabold tracking-[-1px] lg:tracking-[-3px]   ">
                     {"¿Te imaginás arriba"}
                     <br />
                     {"de tu próxima moto?"}
                   </p>{" "}
-                  <p className="mt-2 md:mt-3 text-[#0D385E] text-[12px] md:text-sm font-semibold  lg:text-[36px]">
+                  <div
+                    className="sm:mt-6 h-[2px] w-8 md:w-16 rounded bg-[#2a597e] mt-4 ml-auto"
+                    aria-hidden="true"
+                  />
+                  <p className="mt-2 md:mt-3 text-[#0D385E] text-[11px] tracking-[-0.5px] md:tracking-[-1.5px] md:text-sm font-medium  lg:text-[32.5px]">
                     {"Estás más cerca de lo que pensás."}
                   </p>
                 </AnimatedSection>
@@ -137,14 +145,14 @@ export default function DashboardPuntoVenta() {
           </section>
 
           <div className="bg-[#2a597e] p-6 py-10 mb-0">
-            <div className="grid max-w-5xl mx-auto grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid max-w-5xl mx-auto grid-cols-2 md:grid-cols-4 gap-4 px-10 md:px-0">
               {niveles.map((nivel, index) => (
                 <AnimatedSection
                   delay={0.1 + index * 0.2}
                   key={index}
                   className="bg-transparent flex items-center border mx-auto border-white rounded-full p-3 py-2 md:p-4 text-center max-w-[220px]"
                 >
-                  <p className="text-white text-sm md:text-base leading-[16px] md:leading-[15px] font-medium">
+                  <p className="text-white text-[12px] md:text-[20px] tracking-[-0.5px] leading-[14px] md:leading-[24px] font-medium">
                     {nivel.title}
                   </p>
                 </AnimatedSection>
@@ -156,7 +164,7 @@ export default function DashboardPuntoVenta() {
           <AnimatedSection delay={0.4}>
             <section className="bg-[#3dadff]/15 p-6 py-4 md:py-10">
               <div className="mx-auto  max-w-6xl  block md:items-center py-2 md:px-6 md:py-6 md:flex  md:justify-center px-3 ">
-                <h2 className="text-center sm:text-center text-[#2a597e] text-md  mb-2 md:mb-0 md:text-[36px] mr-0 md:mr-10 font-extrabold">
+                <h2 className="text-center sm:text-center text-[#2a597e] text-[14px]  mb-2 md:mb-0 md:text-[36px] mr-0 md:mr-10 font-bold tracking-[-1px] md:tracking-[-1.5px]">
                   {"Ya llevás cargadas"}
                 </h2>
                 <div className="flex items-center justify-center gap-2 mx-3 md:mx-10">
@@ -169,19 +177,19 @@ export default function DashboardPuntoVenta() {
                     </div>
                   ) : (
                     <>
-                      <span className=" text-2xl md:text-5xl font-extrabold text-[#2a597e]">
+                      <span className=" text-2xl md:text-5xl font-bold tracking-[-1px] md:tracking-[-1.5px] text-[#2a597e]">
                         {invoiceSummary?.totalUnits || 0}
                       </span>
-                      <span className="text-[#2a597e] font-bold  text-[10px] md:text-[16px]">
+                      <span className="text-[#2a597e] font-bold tracking-[-0.5px] pl-2 text-[10px] md:text-[16px]">
                         {"bujías"}
                       </span>
-                      <span className="mx-4 md:mx-8 text-2xl md:text-5xl font-extrabold text-[#2a597e]">
+                      <span className="mx-4 md:mx-8 text-2xl md:text-5xl font-bold tracking-[-1px] md:tracking-[-1.5px] text-[#2a597e]">
                         =
                       </span>
-                      <span className="text-2xl md:text-5xl font-extrabold text-[#2a597e]">
+                      <span className="text-2xl md:text-5xl font-bold tracking-[-1px] md:tracking-[-1.5px] text-[#2a597e]">
                         {invoiceSummary?.totalChances || 0}
                       </span>
-                      <span className="text-[#2a597e] font-bold  text-[10px] md:text-[16px]">
+                      <span className="text-[#2a597e] font-bold tracking-[-0.5px] pl-2 text-[10px] md:text-[16px]">
                         {"chances"}
                       </span>
                     </>
@@ -193,9 +201,9 @@ export default function DashboardPuntoVenta() {
           </AnimatedSection>
 
           {/* Formulario principal */}
-          <section className="mx-auto max-w-6xl px-6 py-4 md:py-12">
+          <section className="mx-auto max-w-6xl px-6 py-4 md:py-12 pt-10 ">
             <AnimatedSection delay={0.5}>
-              <h3 className="text-xl  font-extrabold text-[#2a597e] md:text-[36px] ">
+              <h3 className="text-xl  font-bold text-[#2a597e] md:text-[36px] tracking-[-1px] md:tracking-[-1.5px]">
                 {"Cargá tus compras y participá"}
               </h3>
             </AnimatedSection>
@@ -205,8 +213,8 @@ export default function DashboardPuntoVenta() {
               className="mt-8 space-y-7 text-[#2a597e]"
             >
               {/* Fila 1: Distribuidor / Otro / Cantidad de bujías */}
-              <AnimatedSection delay={0.6}>
-                <span className="text-[18px] ">
+              <AnimatedSection delay={0.6} className="mb-3">
+                <span className="text-[18px] tracking-[-0.5px]">
                   Todos los campos son obligatorios *
                 </span>
               </AnimatedSection>
@@ -217,7 +225,7 @@ export default function DashboardPuntoVenta() {
                   } pt-2`}
                 >
                   <div>
-                    <Label className="text-[#2a597e] text-[16px] font-bold">
+                    <Label className="text-[#2a597e] tracking-[-0.5px] text-[16px] font-bold">
                       Distribuidor *
                     </Label>
                     <Select
@@ -254,7 +262,7 @@ export default function DashboardPuntoVenta() {
 
                   {showOtroInput && (
                     <div>
-                      <Label className="text-[#2a597e] text-[16px] font-bold">
+                      <Label className="text-[#2a597e] tracking-[-0.5px] text-[16px] font-bold">
                         Otro *
                       </Label>
                       <Input
@@ -271,7 +279,7 @@ export default function DashboardPuntoVenta() {
                   )}
 
                   <div>
-                    <Label className="text-[#2a597e] text-[16px] font-bold">
+                    <Label className="text-[#2a597e] tracking-[-0.5px] text-[16px] font-bold">
                       Cantidad de bujías *
                     </Label>
                     <Input
@@ -296,7 +304,7 @@ export default function DashboardPuntoVenta() {
                   <div>
                     <Label
                       htmlFor="invoiceNumber"
-                      className="text-[#2a597e] text-[16px] font-bold"
+                      className="text-[#2a597e] tracking-[-0.5px] text-[16px] font-bold"
                     >
                       N° de factura *
                     </Label>
@@ -314,7 +322,7 @@ export default function DashboardPuntoVenta() {
                   <div>
                     <Label
                       htmlFor="invoiceDate"
-                      className="text-[#2a597e] text-[16px] font-bold"
+                      className="text-[#2a597e] tracking-[-0.5px] text-[16px] font-bold"
                     >
                       Fecha de factura *
                     </Label>
@@ -361,7 +369,7 @@ export default function DashboardPuntoVenta() {
                   />
                   <Label
                     htmlFor="acceptTerms"
-                    className="cursor-pointer text-[#6D6D6D] text-sm md:text-[18px]"
+                    className="cursor-pointer text-[#6D6D6D]/80 tracking-[-0.5px] text-sm md:text-[18px]"
                   >
                     {"He leído y acepto las "}
                     <a href="#" className="underline font-bold">
@@ -382,7 +390,7 @@ export default function DashboardPuntoVenta() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="rounded-full cursor-pointer bg-[#2a597e] px-16 py-6 text-white hover:bg-[#2a597e]/90 font-bold disabled:opacity-50"
+                    className="rounded-full h-[50px] md:h-[70px] text-md md:text-lg tracking-[-0.5px] cursor-pointer bg-[#2a597e] px-10 py-2 md:px-18 md:py-6 text-white hover:bg-[#2a597e]/90 font-bold disabled:opacity-50"
                   >
                     {isSubmitting ? "Enviando..." : "Enviar"}
                   </Button>
@@ -394,13 +402,13 @@ export default function DashboardPuntoVenta() {
           {/* Banda inferior (CTA catálogo) */}
           <AnimatedSection delay={0.6}>
             <section className="bg-[#6d6d6d]  text-center flex flex-col items-center justify-center   min-h-[300px]">
-              <h4 className="text-white text-xl md:text-[36px]  font-extrabold">
+              <h4 className="text-white text-xl md:text-[36px]  font-bold tracking-[-1px] md:tracking-[-1.5px]">
                 {"Más compras, más chances. Sin vueltas."}
               </h4>
               <div className="mt-6">
                 <Button
                   variant="outline"
-                  className="rounded-full h-12 md:h-[70px] w-[150px] md:w-[200px] bg-white text-[#2a597e] font-bold  text-[14px] md:text-[18px] border-transparent hover:bg-white/90 px-6"
+                  className="rounded-full tracking-[-0.5px] h-12 md:h-[70px] w-[150px] md:w-[200px] bg-white text-[#2a597e] font-bold  text-[14px] md:text-[18px] border-transparent hover:bg-white/90 px-6"
                 >
                   {"Ver catálogo"}
                 </Button>

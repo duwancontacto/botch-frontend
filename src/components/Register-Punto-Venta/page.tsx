@@ -222,7 +222,9 @@ export default function FormularioPuntoDeVenta({
       </AnimatedSection>
 
       <AnimatedSection delay={1.4}>
-        <span className="text-[18px]">Todos los campos son obligatorios *</span>
+        <span className="text-[18px] tracking-[-0.5px]">
+          Todos los campos son obligatorios *
+        </span>
       </AnimatedSection>
 
       <AnimatedSection delay={1.6}>

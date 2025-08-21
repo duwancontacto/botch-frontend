@@ -43,17 +43,17 @@ export default function RegisterPage() {
 
           {/* Contenido centrado */}
           <section className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-6 text-center">
-            <h1 className="text-white text-[40px] lg:text-[61px] font-extrabold">
+            <h1 className="text-white text-[40px] tracking-[-1.5px] md:tracking-[-3px] lg:text-[61px] font-extrabold">
               {"¡Gracias por registrarte!"}
             </h1>
-            <p className="lg:mt-6 text-[#ffff] text-[28px] lg:text-[36px]">
+            <p className="lg:mt-2 text-[#ffff] text-[28px] lg:text-[36px] tracking-[-1px] md:tracking-[-1.5px]">
               {"Iniciá sesión y comenzá a sumar chances."}
             </p>
 
             {/* Botón para volver al formulario */}
             <button
               onClick={handleBackToForm}
-              className="mt-8 px-8 py-3 bg-[#3DADFF] text-white rounded-full font-semibold  transition-colors text-lg h-[70px] w-[280px] cursor-pointer"
+              className="mt-8 px-8 py-3 bg-[#3DADFF] text-white rounded-full font-bold tracking-[-0.5px]  transition-colors text-lg h-[70px] w-[280px] cursor-pointer"
             >
               Volver al inicio
             </button>
@@ -62,7 +62,7 @@ export default function RegisterPage() {
       ) : (
         <main className="relative min-h-screen  bg-white">
           {/* Decorative header with curves */}
-          <div className="relative   h-40 sm:h-48 lg:h-56   min-h-[330px]">
+          <div className="relative   h-30 sm:h-48 lg:h-56   min-h-[300px]">
             <div className="absolute inset-0 bg-[#2a597e]" />
             <Image
               src={backgroundImage}
@@ -72,7 +72,7 @@ export default function RegisterPage() {
               priority
             />
             <div className="relative z-10 mx-auto flex h-full max-w-5xl items-center justify-center px-6 text-center">
-              <h1 className="text-[#0D385E] text-2xl sm:text-3xl lg:text-4xl font-extrabold">
+              <h1 className="text-[#0D385E] text-2xl sm:text-3xl lg:text-4xl tracking-[-1px] md:tracking-[-1.5px] font-bold">
                 {tipo === "distributor"
                   ? "Registrate, cargá tus ventas"
                   : "Registrate, cargá tus compras"}

@@ -81,19 +81,19 @@ export default function SuccessPuntoVenta({
         {/* Mensaje principal */}
         <div className="relative min-h-[650px] z-10 mx-auto flex max-w-4xl flex-col items-center justify-center px-6 py-10 text-center sm:py-20">
           <AnimatedSection delay={0.4}>
-            <h1 className="text-white text-4xl md:text-[60px] font-extrabold">
+            <h1 className="text-white text-4xl md:text-[60px] font-bold tracking-[-1px] md:tracking-[-1.5px]">
               {"Ya estás participando"}
             </h1>
           </AnimatedSection>
 
           <AnimatedSection delay={0.6}>
-            <p className=" text-white text-2xl font-bold md:text-[36px]">
+            <p className=" text-white text-2xl font-bold md:text-[36px] tracking-[-1px] md:tracking-[-1.5px]">
               {"Gracias por confiar en BOSCH"}
             </p>
           </AnimatedSection>
 
           <AnimatedSection delay={0.6}>
-            <p className="mt-6 text-white text-lg md:text-[20px]">
+            <p className="mt-6 text-white tracking-[-0.5px] text-lg md:text-[20px] leading-[20px] md:leading-[28px]">
               {"Cuantas más bujías compres, ¡más chances sumás! "}
               <br></br>
               <span className="font-bold text-lg md:text-[20px]">
@@ -105,7 +105,7 @@ export default function SuccessPuntoVenta({
           <AnimatedSection delay={0.8}>
             <div className="mt-8">
               <Button
-                className="rounded-full cursor-pointer text-lg bg-[#3dadff] text-white hover:bg-[#3dadff]/90 px-10 py-8 font-bold"
+                className="rounded-full cursor-pointer text-lg bg-[#3dadff] text-white hover:bg-[#3dadff]/90 px-10 py-8 font-bold tracking-[-0.5px]"
                 onClick={() => setIsSuccess(false)}
               >
                 {"Cargar más facturas"}
@@ -118,23 +118,23 @@ export default function SuccessPuntoVenta({
       <AnimatedSection delay={0.8}>
         <section className="bg-[#3dadff]/15 p-6 py-4 md:py-10">
           <div className="mx-auto  max-w-6xl  block md:items-center py-2 md:px-6 md:py-6 md:flex  md:justify-center px-3 ">
-            <h2 className="text-center sm:text-center text-[#2a597e] text-md  mb-2 md:mb-0 md:text-[36px] mr-0 md:mr-10 font-extrabold">
+            <h2 className="text-center sm:text-center text-[#2a597e] text-md  mb-2 md:mb-0 md:text-[36px] mr-0 md:mr-10 font-bold tracking-[-1px] md:tracking-[-1.5px]">
               {"Ya llevás cargadas"}
             </h2>
             <div className="flex items-center justify-center gap-2 mx-3 md:mx-10">
-              <span className=" text-2xl md:text-5xl font-extrabold text-[#2a597e]">
+              <span className=" text-2xl md:text-5xl font-bold tracking-[-1px] md:tracking-[-1.5px] text-[#2a597e]">
                 {invoiceSummary?.totalUnits || 0}
               </span>
-              <span className="text-[#2a597e] font-bold  text-[10px] md:text-[16px]">
+              <span className="text-[#2a597e] font-bold tracking-[-0.5px]  text-[10px] md:text-[16px]">
                 {"bujías"}
               </span>
-              <span className="mx-4 md:mx-8 text-2xl md:text-5xl font-extrabold text-[#2a597e]">
+              <span className="mx-4 md:mx-8 text-2xl md:text-5xl font-bold tracking-[-1px] md:tracking-[-1.5px] text-[#2a597e]">
                 =
               </span>
-              <span className="text-2xl md:text-5xl font-extrabold text-[#2a597e]">
+              <span className="text-2xl md:text-5xl font-bold tracking-[-1px] md:tracking-[-1.5px] text-[#2a597e]">
                 {invoiceSummary?.totalChances || 0}
               </span>
-              <span className="text-[#2a597e] font-bold  text-[10px] md:text-[16px]">
+              <span className="text-[#2a597e] font-bold tracking-[-0.5px]  text-[10px] md:text-[16px]">
                 {"chances"}
               </span>
             </div>
@@ -145,13 +145,13 @@ export default function SuccessPuntoVenta({
       {/* Bloque gris con CTA catálogo */}
       <AnimatedSection delay={0.8}>
         <section className="bg-[#6d6d6d]  text-center flex flex-col items-center justify-center   min-h-[300px]">
-          <h4 className="text-white text-xl md:text-[36px]  font-extrabold">
+          <h4 className="text-white text-xl md:text-[36px]  font-bold tracking-[-1px] md:tracking-[-1.5px]">
             {"Más compras, más chances. Sin vueltas."}
           </h4>
           <div className="mt-6">
             <Button
               variant="outline"
-              className="rounded-full h-12 md:h-[70px] w-[150px] md:w-[200px] bg-white text-[#2a597e] font-bold  text-[14px] md:text-[18px] border-transparent hover:bg-white/90 px-6"
+              className="rounded-full tracking-[-0.5px] h-12 md:h-[70px] w-[150px] md:w-[200px] bg-white text-[#2a597e] font-bold  text-[14px] md:text-[18px] border-transparent hover:bg-white/90 px-6"
             >
               {"Ver catálogo"}
             </Button>

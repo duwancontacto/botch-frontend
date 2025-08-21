@@ -98,7 +98,7 @@ export default function DashboardDistributor() {
     reset();
   };
 
-  if (!isSuccess) {
+  if (isSuccess) {
     return <SuccessDistributor setIsSuccess={handleSuccess} />;
   }
 
@@ -125,7 +125,7 @@ export default function DashboardDistributor() {
         {/* Contenido principal */}
         <section className="mx-auto max-w-6xl px-6 py-3 md:py-0  ">
           <AnimatedSection delay={0.4}>
-            <h1 className="text-xl sm:text-[36px] font-extrabold text-[#2a597e] pt-[5px] md:pt-[80px]">
+            <h1 className="text-xl sm:text-[36px] font-bold tracking-[-1.5px] text-[#2a597e] pt-[5px] md:pt-[80px]">
               {"Cargá tus ventas y participá"}
             </h1>
           </AnimatedSection>
@@ -135,7 +135,7 @@ export default function DashboardDistributor() {
             <div className="mt-6 ">
               <Button
                 onClick={handleDownloadReport}
-                className="inline-flex cursor-pointer p-0 items-center gap-2 text-[#2a597e] text-sm md:text-[18px]  hover:opacity-90 font-bold sm:text-lg"
+                className="inline-flex cursor-pointer p-0 tracking-[-0.75px] items-center gap-2 text-[#2a597e] text-sm md:text-[18px]  hover:opacity-90 font-bold sm:text-lg"
               >
                 <span className="underline">
                   {"Descargá el reporte para completar con tus ventas"}
@@ -151,17 +151,17 @@ export default function DashboardDistributor() {
             className="mt-6 space-y-7 text-[#2a597e]"
           >
             {/* Campos obligatorios */}
-            <AnimatedSection delay={0.8}>
-              <span className="text-[18px] ">
+            <AnimatedSection delay={0.8} className="mb-3">
+              <span className="text-[18px] tracking-[-0.75px] ">
                 Todos los campos son obligatorios *
               </span>
             </AnimatedSection>
 
             {/* Distribuidor y Archivo */}
             <AnimatedSection delay={1.0}>
-              <div className="grid gap-6 md:grid-cols-2 pt-2">
+              <div className="grid gap-6 md:grid-cols-2">
                 <div>
-                  <Label className="text-[#2a597e] font-bold text-sm sm:text-base">
+                  <Label className="text-[#2a597e] font-bold tracking-[-0.5px] text-sm sm:text-base">
                     Distribuidor *
                   </Label>
                   <Select
@@ -193,7 +193,7 @@ export default function DashboardDistributor() {
 
                 {/* Adjuntar documento */}
                 <div>
-                  <Label className="text-[#2a597e] font-bold text-sm sm:text-base">
+                  <Label className="text-[#2a597e] font-bold tracking-[-0.5px] text-sm sm:text-base">
                     Archivo de ventas *
                   </Label>
                   <div className="mt-2 relative text-[#6D6D6D]">
@@ -222,7 +222,7 @@ export default function DashboardDistributor() {
                     </p>
                   )}
                   {watchedFile && (
-                    <p className="text-sm text-[#6D6D6D] mt-1">
+                    <p className="text-sm tracking-[-0.5px] text-[#6D6D6D] mt-1">
                       Archivo seleccionado: {watchedFile.name} (
                       {(watchedFile.size / 1024 / 1024).toFixed(2)} MB)
                     </p>
@@ -233,7 +233,7 @@ export default function DashboardDistributor() {
 
             {/* Notas */}
             <AnimatedSection delay={1.2}>
-              <div className="space-y-1 text-[#6D6D6D]/80 text-sm sm:text-base md:text-lg">
+              <div className="space-y-1 text-[#6D6D6D]/80 text-sm tracking-[-0.5px] sm:text-base md:text-lg">
                 <p>{"* Todos los datos proporcionados serán constatados."}</p>
                 <p>
                   {
@@ -258,7 +258,7 @@ export default function DashboardDistributor() {
                 />
                 <Label
                   htmlFor="acceptTerms"
-                  className="cursor-pointer text-[#6D6D6D] text-sm sm:text-base"
+                  className="cursor-pointer opacity-80 text-[#6D6D6D] text-sm sm:text-lg tracking-[-0.5px]"
                 >
                   {"He leído y acepto las "}
                   <a href="#" className="underline font-bold">
@@ -280,7 +280,7 @@ export default function DashboardDistributor() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="rounded-full bg-[#2a597e] px-16 py-6 sm:py-5 lg:py-7 text-white hover:bg-[#2a597e]/90 transition-colors disabled:opacity-50"
+                  className="rounded-full text-lg font-bold bg-[#2a597e] px-16 py-6 sm:py-5 lg:py-8 text-white hover:bg-[#2a597e]/90 transition-colors disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     <>

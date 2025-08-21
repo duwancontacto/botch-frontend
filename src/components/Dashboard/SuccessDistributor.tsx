@@ -75,13 +75,13 @@ export default function SuccessDistributor({
       {/* Contenido centrado */}
       <section className="relative  z-10 mx-auto flex min-h-0 h-[100vh] max-w-5xl flex-col items-center justify-center px-6 text-center mt-8 md:mt-0 ">
         <AnimatedSection delay={0.5}>
-          <h1 className="text-white text-4xl  md:text-[60px]  font-extrabold">
+          <h1 className="text-white text-4xl  md:text-[60px]  font-bold tracking-[-1.5px] md:tracking-[-3px]">
             {"¡Ya estás participando"}
           </h1>
         </AnimatedSection>
 
         <AnimatedSection delay={0.8}>
-          <p className=" text-[#ffff] text-2x font-bold md:text-[36px] ">
+          <p className=" text-[#ffff] text-2xl font-bold md:text-[36px] tracking-[-1px] md:tracking-[-1.5px]">
             {"Gracias por confiar en BOSCH"}
           </p>
         </AnimatedSection>
@@ -89,7 +89,7 @@ export default function SuccessDistributor({
         <AnimatedSection delay={1.2}>
           <div className="mt-8 space-y-4">
             <Button
-              className="rounded-full cursor-pointer text-lg bg-[#3dadff] text-white hover:bg-[#3dadff]/90 px-10 py-8 font-bold"
+              className="rounded-full cursor-pointer text-lg bg-[#3dadff] text-white hover:bg-[#3dadff]/90 px-10 py-8 md:px-14 md:py-9 font-bold"
               onClick={() => setIsSuccess(false)}
             >
               Cargar mas ventas

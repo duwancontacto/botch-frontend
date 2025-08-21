@@ -111,7 +111,7 @@ export function ContactForm({
       <div>
         <Label
           htmlFor="nombre"
-          className="text-sm md:text-[17px] text-[#2a597e]"
+          className="text-sm md:text-[17px] tracking-[-0.5px] text-[#2a597e]"
         >
           Nombre y apellido *
         </Label>
@@ -130,7 +130,7 @@ export function ContactForm({
       <div>
         <Label
           htmlFor="email"
-          className="text-sm  md:text-[17px] text-[#2a597e]"
+          className="text-sm  md:text-[17px] tracking-[-0.5px] text-[#2a597e]"
         >
           Email *
         </Label>
@@ -149,7 +149,7 @@ export function ContactForm({
       <div>
         <Label
           htmlFor="mensaje"
-          className="text-sm md:text-[17px] text-[#2a597e]"
+          className="text-sm md:text-[17px] tracking-[-0.5px] text-[#2a597e]"
         >
           Mensaje *
         </Label>
@@ -169,7 +169,7 @@ export function ContactForm({
         <Button
           type="submit"
           disabled={isLoading}
-          className="rounded-full cursor-pointer bg-[#2a597e] px-9 h-[50px] text-white hover:bg-[#2a597e]/90 font-bold disabled:opacity-50 disabled:cursor-not-allowed "
+          className="rounded-full text-[15px] tracking-[-0.5px] cursor-pointer bg-[#2a597e] px-9 h-[50px] text-white hover:bg-[#2a597e]/90 font-bold disabled:opacity-50 disabled:cursor-not-allowed "
         >
           {isLoading ? (
             <div className="flex items-center gap-2">

@@ -36,7 +36,7 @@ const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
         <Label
           htmlFor={id}
           className={cn(
-            "text-[#2a597e]",
+            "text-[#2a597e] tracking-[-0.5px]",
             labelClassName,
             required && "after:content-['*'] after:ml-1 after:text-red-500"
           )}

@@ -47,7 +47,8 @@ const FormSelect = forwardRef<HTMLButtonElement, FormSelectProps>(
           className={cn(
             "text-[#0D385E]",
             labelClassName,
-            required && "after:content-['*'] after:ml-1 after:text-red-500"
+            required &&
+              "after:content-['*'] tracking-[-0.5px] after:ml-1 after:text-red-500"
           )}
         >
           {label}

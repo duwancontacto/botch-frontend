@@ -17,7 +17,7 @@ function TimelineItem({ text, isLast }: { text: string; isLast: boolean }) {
     const updateLineHeightToText = () => {
       if (!textRef.current || !lineRef.current) return;
       const paragraphHeight = textRef.current.offsetHeight;
-      lineRef.current.style.height = `${paragraphHeight}px`;
+      lineRef.current.style.height = `${paragraphHeight - 7}px`;
     };
 
     updateLineHeightToText();
@@ -60,7 +60,7 @@ function TimelineItemMobile({
     const updateLineHeightToText = () => {
       if (!textRef.current || !lineRef.current) return;
       const paragraphHeight = textRef.current.offsetHeight;
-      lineRef.current.style.height = `${paragraphHeight - 10}px`;
+      lineRef.current.style.height = `${paragraphHeight + 3}px`;
     };
 
     updateLineHeightToText();
@@ -69,16 +69,16 @@ function TimelineItemMobile({
   }, []);
 
   return (
-    <li className="relative pl-6">
-      <span className="absolute left-0 top-1 w-3 h-3 rounded-full border-2 border-[#2A597E]" />
+    <li className="relative pl-4 py-1">
+      <span className="absolute left-0 top-2 w-[7px] h-[7px] rounded-full border-1 border-[#2A597E]" />
       {!isLast && (
         <span
           ref={lineRef}
-          className="absolute left-[5px] top-[14px] w-[2px] bg-[#2A597E] rounded-[2px]"
+          className="absolute left-[3px] top-[14px] w-[1px] bg-[#2A597E] rounded-[1px]"
           aria-hidden="true"
         />
       )}
-      <p ref={textRef} className="leading-relaxed">
+      <p ref={textRef} className="leading-[15px] text-[12px] tracking-[-0.5px]">
         {text}
       </p>
     </li>
@@ -93,7 +93,7 @@ export default function LoginPage() {
       <main className="grid h-[260px] lg:h-full  min-h-screen grid-cols-1 lg:grid-cols-2 bg-light">
         {/* Columna izquierda: imagen de fondo con contenido dinámico */}
         <div
-          className={`relative min-h-[100px] lg:min-h-[${
+          className={`relative min-h-[180px] lg:min-h-[${
             userType === "distributor" ? "400px" : "600px"
           }] `}
         >
@@ -108,16 +108,16 @@ export default function LoginPage() {
             src={backgroundImageMobile}
             alt="Fondo Login"
             fill
-            className="absolute block lg:hidden inset-0 object-cover"
+            className="absolute block  h-[200px]  lg:hidden inset-0 object-cover"
             priority
           />
 
           {/* Contenido dinámico según el tipo de usuario */}
-          <div className="relative  h-full inset-0 z-10 flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-10 pt-20 md:pt-0">
+          <div className="relative h-full inset-0 z-10 flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-10 pt-0 md:pt-0">
             {userType === "distributor" ? (
               // Contenido para Distribuidor
               <AnimatedSection delay={0.2}>
-                <h1 className="text-3xl lg:text-4xl xl:text-[46px] font-extrabold leading-tight text-[#0D385E] max-w-xl text-center lg:text-left">
+                <h1 className="tracking-[-1.5px] lg-tracking-[-2] text-[25px] lg:text-[47px] font-extrabold leading-[27px] lg:leading-[50px] text-[#0D385E] max-w-xl text-center lg:text-left">
                   {"Registrate,"}
                   <br />
                   {"cargá tus ventas y"}
@@ -126,9 +126,9 @@ export default function LoginPage() {
                 </h1>
               </AnimatedSection>
             ) : (
-              <div className="z-10 px-10 md:px-20   lg:px-0 md:mx-14 my-5 md:my-24 text-[#0D385E] max-w-2xl ">
+              <div className="z-10 px-10 md:px-20   lg:px-0 md:mx-14 my-5 md:my-24 text-[#0D385E] max-w-2xl pt-10 md:pt-0">
                 <AnimatedSection delay={0.2}>
-                  <h1 className="text-3xl md:text-4xl lg:text-[46px] xl:text-7xl leading-tight xl:leading-[70px] font-bold">
+                  <h1 className="tracking-[-1.5px] lg-tracking-[-2] text-[25px] lg:text-[47px] font-extrabold leading-[27px] lg:leading-[50px] text-[#0D385E] max-w-xl text-center lg:text-left">
                     {"Tu confianza"}
                     <br />
                     {"tiene premio."}
@@ -144,16 +144,16 @@ export default function LoginPage() {
                 </AnimatedSection>
 
                 <AnimatedSection delay={0.6}>
-                  <p className="mt-2 md:mt-8 text-xl  hidden lg:block lg:text-[25px] leading-snug max-w-[460px]">
+                  <p className="mt-2 md:mt-8  text-xl  hidden lg:block text-[25px] leading-[27px] max-w-[410px] tracking-[-1.25px] ">
                     Con la compra de bujías Bosch de septiembre, octubre y
                     noviembre podés ganarte una de las{" "}
-                    <span className="font-semibold">ocho motos en juego.</span>
+                    <span className="font-medium">ocho motos en juego.</span>
                   </p>
                 </AnimatedSection>
 
                 {/* Lista tipo timeline */}
                 <AnimatedSection delay={0.8}>
-                  <ul className="my-10  space-y-3  hidden lg:block md:space-y-3 text-[15px]">
+                  <ul className="my-10  space-y-1 hidden lg:block leading-[24px] text-[20px] tracking-[-1px]">
                     {[
                       { text: "De 50 a 99 bujías, sumás 1 chance." },
                       { text: "De 100 a 199, sumás 3 chances." },
@@ -170,7 +170,7 @@ export default function LoginPage() {
                 </AnimatedSection>
 
                 <AnimatedSection delay={1.0}>
-                  <p className=" text-[20px]  hidden lg:block leading-relaxed">
+                  <p className=" text-[20px] leading-[24px] tracking-[-1px] hidden lg:block">
                     {"Registrate, cargá tus compras"}
                     <br />
                     {"y empezá a sumar chances."}
@@ -182,14 +182,14 @@ export default function LoginPage() {
         </div>
 
         {userType !== "distributor" && (
-          <AnimatedSection delay={1.1} className="lg:hidden">
-            <div className=" px-10 md:px-20 py-5 md:py-10 gap-4 bg-[#3DADFF]/15 flex flex-row items-center justify-center lg:hidden text-[#0D385E] ">
-              <p className="w-1/2 text-[12px] md:text-[15px] leading-relaxed">
+          <AnimatedSection delay={0.3} className="lg:hidden">
+            <div className=" px-10 sm:px-20 py-5 md:py-10 gap-4 bg-[#3DADFF]/15 flex flex-row items-center justify-center lg:hidden text-[#0D385E] ">
+              <p className=" max-w-[120px] text-[11px] leading-[11px] tracking-[-0.5px]">
                 Con la compra de bujías Bosch de septiembre, octubre y noviembre
                 podés ganarte una de las ocho motos en juego.
               </p>
 
-              <ul className="w-1/2 mt-4  text-[12px] md:text-[15px]">
+              <ul className=" mt-4 text-[9px] leading-[11px] tracking-[-0.5px]">
                 {[
                   { text: "De 50 a 99 bujías, sumás 1 chance." },
                   { text: "De 100 a 199, sumás 3 chances." },
