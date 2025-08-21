@@ -18,7 +18,6 @@ import Image from "next/image";
 import backgroundImage from "@/assets/FondoDataPuntoVenta.webp";
 import Footer from "@/components/Footer";
 import ProtectedRoute from "@/components/ProtectedRoute";
-import { useAuth } from "store/useAuth";
 import { useDistributors } from "@/lib/hooks/use-distributors";
 import { useCreatePdvInvoice } from "@/lib/hooks/use-pdv-invoice-mutations";
 import { useInvoiceSummary } from "@/lib/hooks/use-invoice-summary";
@@ -33,7 +32,6 @@ import { AnimatedSection } from "@/components/ui/animated-section";
 import Header from "../Header";
 
 export default function DashboardPuntoVenta() {
-  const { logout } = useAuth();
   const [isSuccess, setIsSuccess] = useState(false);
   const { data: distributors, isLoading: isLoadingDistributors } =
     useDistributors();
@@ -62,10 +60,6 @@ export default function DashboardPuntoVenta() {
 
   const watchedDistributor = watch("habitualDistributorId");
   const showOtroInput = watchedDistributor === "otro";
-
-  const handleLogout = () => {
-    logout();
-  };
 
   const handleDistribuidorChange = (value: string) => {
     setValue("habitualDistributorId", value);
