@@ -401,17 +401,34 @@ export default function DashboardPuntoVenta() {
 
           {/* Banda inferior (CTA catálogo) */}
           <AnimatedSection delay={0.6}>
-            <section className="bg-[#6d6d6d]  text-center flex flex-col items-center justify-center   min-h-[300px]">
-              <h4 className="text-white text-xl md:text-[36px]  font-bold tracking-[-1px] md:tracking-[-1.5px]">
-                {"Más compras, más chances. Sin vueltas."}
-              </h4>
-              <div className="mt-6">
-                <Button
-                  variant="outline"
-                  className="rounded-full tracking-[-0.5px] h-12 md:h-[70px] w-[150px] md:w-[200px] bg-white text-[#2a597e] font-bold  text-[14px] md:text-[18px] border-transparent hover:bg-white/90 px-6"
-                >
-                  {"Ver catálogo"}
-                </Button>
+            <section className="bg-[#6d6d6d] text-center flex flex-col items-center justify-center min-h-[330px] relative overflow-hidden">
+              {/* Video de fondo */}
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover z-0"
+              >
+                <source src="/botch-video.mp4" type="video/mp4" />
+              </video>
+
+              {/* Overlay para mejorar la legibilidad del texto */}
+              <div className="absolute inset-0 bg-black/40 z-10"></div>
+
+              {/* Contenido del section */}
+              <div className="relative z-20">
+                <h4 className="text-white text-xl md:text-[36px] font-bold tracking-[-1px] md:tracking-[-1.5px]">
+                  {"Más compras, más chances. Sin vueltas."}
+                </h4>
+                <div className="mt-6">
+                  <Button
+                    variant="outline"
+                    className="rounded-full tracking-[-0.5px] h-12 md:h-[70px] w-[150px] md:w-[200px] bg-white text-[#2a597e] font-bold text-[14px] md:text-[18px] border-transparent hover:bg-white/90 px-6"
+                  >
+                    {"Ver catálogo"}
+                  </Button>
+                </div>
               </div>
             </section>
           </AnimatedSection>
