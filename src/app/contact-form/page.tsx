@@ -24,9 +24,7 @@ export default function ContactoPage() {
         />
         <div className="absolute inset-0 opacity-45 mix-blend-multiply" />
 
-        <AnimatedSection delay={0.2}>
-          <Header />
-        </AnimatedSection>
+        <Header />
 
         {/* Tarjeta de contacto */}
         <AnimatedSection delay={0.4} className="">
