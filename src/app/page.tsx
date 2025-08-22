@@ -22,7 +22,7 @@ export default function Page() {
 
   return (
     <AuthRedirect>
-      <main className="relative min-h-screen overflow-hidden pb-20">
+      <main className="relative min-h-screen overflow-hidden pb-20 md:pb-0">
         {/* Capa 1: Imagen de fondo */}
         <Image
           src={backgroundImage}
@@ -59,7 +59,7 @@ export default function Page() {
           </header>
         </AnimatedSection>
         {/* Contenido principal */}
-        <section className="relative z-10 px-4 lg:px-0 flex items-start md:items-center pt-20 md:pt-16  h-[85vh] md:mb-0">
+        <section className="relative z-10 px-4 lg:px-0 flex items-start md:items-center pt-30 md:pt-16  h-[85vh] md:mb-0">
           <div className=" mx-4 md:mx-10  lg:mx-24  z-10 ">
             <AnimatedSection delay={0.1}>
               <p className="text-[#0D385E] drop-shadow-sm text-[15px] md:text-[30px] font-medium leading-[18px] md:leading-[38px] tracking-[-1px] md:tracking-[-2px]">

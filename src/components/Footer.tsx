@@ -2,28 +2,18 @@ import LogoFacebook from "@/assets/Logo-facebook.png";
 import Image from "next/image";
 import LogoInstagram from "@/assets/Logo-Instragam.png";
 import LogoLinkedin from "@/assets/Logo-Linkedin.png";
-export default function Footer({ absolute }: { absolute?: boolean }) {
-  const IconWrap = ({
-    children,
-    label,
-  }: {
-    children: React.ReactNode;
-    label: string;
-  }) => (
-    <a
-      href="#"
-      aria-label={label}
-      className="grid size-10 place-items-center ro3l bg-white text-[#2a597e] shadow hover:opacity-90 transition"
-    >
-      {children}
-    </a>
-  );
-
+export default function Footer({
+  absolute,
+  className,
+}: {
+  absolute?: boolean;
+  className?: string;
+}) {
   return (
     <div
       className={`${
         absolute ? "fixed" : "relative"
-      } inset-x-0 bottom-0 z-20 bg-[#2a597e] p-5 md:p-3 flex justify-center items-center mx-auto`}
+      } inset-x-0 bottom-0 z-20 bg-[#2a597e] p-5 md:p-3 flex justify-center items-center mx-auto ${className}`}
     >
       <div>
         <div className="flex justify-center items-center gap-4">

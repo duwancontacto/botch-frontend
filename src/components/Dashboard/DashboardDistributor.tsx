@@ -280,7 +280,7 @@ export default function DashboardDistributor() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="rounded-full text-lg font-bold bg-[#2a597e] px-16 py-6 sm:py-5 lg:py-8 text-white hover:bg-[#2a597e]/90 transition-colors disabled:opacity-50"
+                  className="rounded-full h-[50px] md:h-[70px] text-md md:text-lg tracking-[-0.5px] cursor-pointer bg-[#2a597e] px-10 py-2 md:px-18 md:py-6 text-white hover:bg-[#2a597e]/90 font-bold disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     <>

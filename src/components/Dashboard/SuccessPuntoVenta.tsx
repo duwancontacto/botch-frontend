@@ -105,7 +105,7 @@ export default function SuccessPuntoVenta({
           <AnimatedSection delay={0.8}>
             <div className="mt-8">
               <Button
-                className="rounded-full cursor-pointer text-lg bg-[#3dadff] text-white hover:bg-[#3dadff]/90 px-10 py-8 font-bold tracking-[-0.5px]"
+                className="rounded-full h-12.5 md:h-[70px] cursor-pointer text-[12px] md:text-lg bg-[#3dadff] text-white hover:bg-[#3dadff]/90 px-8  font-bold tracking-[-0.5px]"
                 onClick={() => setIsSuccess(false)}
               >
                 {"Cargar más facturas"}
@@ -167,7 +167,7 @@ export default function SuccessPuntoVenta({
             <div className="mt-6">
               <Button
                 variant="outline"
-                className="rounded-full tracking-[-0.5px] h-12 md:h-[70px] w-[150px] md:w-[200px] bg-white text-[#2a597e] font-bold text-[14px] md:text-[18px] border-transparent hover:bg-white/90 px-6"
+                className="rounded-full tracking-[-0.5px] h-12.5 md:h-[70px] w-[150px] md:w-[200px] bg-white text-[#2a597e] font-bold text-[14px] md:text-[18px] border-transparent hover:bg-white/90 px-6"
               >
                 {"Ver catálogo"}
               </Button>

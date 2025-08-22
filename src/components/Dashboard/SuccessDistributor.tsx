@@ -89,7 +89,7 @@ export default function SuccessDistributor({
         <AnimatedSection delay={1.2}>
           <div className="mt-8 space-y-4">
             <Button
-              className="rounded-full cursor-pointer text-lg bg-[#3dadff] text-white hover:bg-[#3dadff]/90 px-10 py-8 md:px-14 md:py-9 font-bold"
+              className="rounded-full h-12.5 md:h-[70px] cursor-pointer text-[12px] md:text-lg bg-[#3dadff] text-white hover:bg-[#3dadff]/90 px-8  font-bold tracking-[-0.5px]"
               onClick={() => setIsSuccess(false)}
             >
               Cargar mas ventas
