@@ -28,7 +28,7 @@ export default function ContactoPage() {
 
         {/* Tarjeta de contacto */}
         <AnimatedSection delay={0.4} className="">
-          <section className="relative  h-full z-10 mx-auto flex max-w-2xl justify-center px-6 py-10 sm:py-20 pt-10 sm:pt-10">
+          <section className="relative  h-full z-10 mx-auto flex max-w-2xl justify-center px-6 py-10 sm:py-10 pt-10 sm:pt-30">
             <div className="w-full min-w-[80vw] md:min-w-[600px] rounded-2xl bg-white p-6 shadow-xl ring-1 ring-black/5 sm:p-8 ">
               {!hideTitle && (
                 <AnimatedSection delay={0.6}>

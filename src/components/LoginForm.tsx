@@ -141,7 +141,7 @@ export default function LoginForm() {
         <AnimatedSection delay={1.0}>
           <p className="mt-0 text-[#2a597e] text-[11px] md:text-[15px] tracking-[-0.75px] text-left">
             {"¿Todavía no tenés cuenta? "}
-            <Link href="/register" className="font-extrabold text-[#2a597e]">
+            <Link href="/register" className="font-bold text-[#2a597e]">
               {"Registrate ahora."}
             </Link>
           </p>

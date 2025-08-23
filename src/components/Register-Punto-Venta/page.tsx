@@ -80,14 +80,6 @@ export default function FormularioPuntoDeVenta({
       <AnimatedSection delay={0.2}>
         <div className="grid gap-6 md:grid-cols-2">
           <FormField
-            label="Nombre y apellido"
-            id="fullName"
-            labelClassName="font-bold"
-            required
-            error={errors.fullName?.message}
-            {...register("fullName")}
-          />
-          <FormField
             label="Nombre fantasía"
             id="fantasyName"
             labelClassName="font-bold"
@@ -95,12 +87,6 @@ export default function FormularioPuntoDeVenta({
             error={errors.fantasyName?.message}
             {...register("fantasyName")}
           />
-        </div>
-      </AnimatedSection>
-
-      {/* Razón social / CUIT */}
-      <AnimatedSection delay={0.4}>
-        <div className="grid gap-6 md:grid-cols-2">
           <FormField
             label="Razón social"
             id="socialReason"
@@ -109,6 +95,12 @@ export default function FormularioPuntoDeVenta({
             error={errors.socialReason?.message}
             {...register("socialReason")}
           />
+        </div>
+      </AnimatedSection>
+
+      {/* Razón social / CUIT */}
+      <AnimatedSection delay={0.4}>
+        <div className="grid gap-6 md:grid-cols-2">
           <FormField
             label="CUIT"
             id="cuit"
@@ -117,6 +109,14 @@ export default function FormularioPuntoDeVenta({
             required
             error={errors.cuit?.message}
             {...register("cuit")}
+          />
+          <FormField
+            label="Nombre y apellido"
+            id="fullName"
+            labelClassName="font-bold"
+            required
+            error={errors.fullName?.message}
+            {...register("fullName")}
           />
         </div>
       </AnimatedSection>
