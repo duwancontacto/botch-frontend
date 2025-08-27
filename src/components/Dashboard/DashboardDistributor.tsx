@@ -49,8 +49,8 @@ export default function DashboardDistributor() {
   // Función para descargar el archivo Excel
   const handleDownloadReport = () => {
     const link = document.createElement("a");
-    link.href = "/reporte-campaña-bujías-dist.xlsx";
-    link.download = "reporte-campaña-bujías-dist.xlsx";
+    link.href = "/reporte-campaña-bujias.xlsx";
+    link.download = "reporte-campaña-bujias.xlsx";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -261,7 +261,11 @@ export default function DashboardDistributor() {
                   className="cursor-pointer opacity-80 text-[#6D6D6D] text-sm sm:text-lg tracking-[-0.5px]"
                 >
                   {"He leído y acepto las "}
-                  <a href="#" className="underline font-bold">
+                  <a
+                    target="_blank"
+                    href="/BOSCH-BC-Bujias-Concurso-Distribuidores.pdf"
+                    className="underline font-bold"
+                  >
                     {"bases y condiciones"}
                   </a>
                   .

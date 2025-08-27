@@ -167,7 +167,15 @@ export default function SuccessPuntoVenta({
             <div className="mt-6">
               <Button
                 variant="outline"
-                className="rounded-full tracking-[-0.5px] h-12.5 md:h-[70px] w-[150px] md:w-[200px] bg-white text-[#2a597e] font-bold text-[14px] md:text-[18px] border-transparent hover:bg-white/90 px-6"
+                className="rounded-full cursor-pointer tracking-[-0.5px] h-12.5 md:h-[70px] w-[150px] md:w-[200px] bg-white text-[#2a597e] font-bold text-[14px] md:text-[18px] border-transparent hover:bg-white/90 px-6"
+                onClick={() => {
+                  const link = document.createElement("a");
+                  link.href = "/Catalogo-Bujias-Bosch.pdf";
+                  link.download = "Catalogo-Bujias-Bosch.pdf";
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                }}
               >
                 {"Ver catálogo"}
               </Button>

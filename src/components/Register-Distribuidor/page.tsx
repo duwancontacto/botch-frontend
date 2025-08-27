@@ -71,7 +71,7 @@ export default function FormularioDistribuidor({
     >
       {/* Distribuidor (Select) */}
       <AnimatedSection delay={0.2}>
-        <div className="max-w-3xl">
+        <div className="w-full">
           <FormSelect
             label="Distribuidor"
             id="distributorId"

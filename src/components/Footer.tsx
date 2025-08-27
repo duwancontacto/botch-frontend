@@ -1,7 +1,7 @@
 import LogoFacebook from "@/assets/Logo-facebook.png";
 import Image from "next/image";
 import LogoInstagram from "@/assets/Logo-Instragam.png";
-import LogoLinkedin from "@/assets/Logo-Linkedin.png";
+import LogoWeb from "@/assets/web.png";
 export default function Footer({
   absolute,
   className,
@@ -17,7 +17,11 @@ export default function Footer({
     >
       <div>
         <div className="flex justify-center items-center gap-4">
-          <div className="w-8 h-8">
+          <a
+            target="_blank"
+            href="https://www.instagram.com/bosch.autopartes/"
+            className="w-8 h-8"
+          >
             <Image
               src={LogoInstagram}
               alt="Logo Instagram"
@@ -26,29 +30,31 @@ export default function Footer({
               className="rounded-full object-cover cursor-pointer"
               priority
             />
-          </div>
-          <div className="w-8 h-8">
-            <Image
-              src={LogoFacebook}
-              alt="Logo Facebook"
-              width={29}
-              height={29}
-              className="rounded-full object-cover cursor-pointer"
-              priority
-            />
-          </div>
+          </a>
 
-          <div className="w-8 h-8">
+          <a
+            target="_blank"
+            href="https://www.boschaftermarket.com/es/es/ "
+            className="w-8 h-8"
+          >
             <Image
-              src={LogoLinkedin}
+              src={LogoWeb}
               alt="Logo LinkedIn"
               width={29}
               height={29}
               className="rounded-full object-cover cursor-pointer"
               priority
             />
-          </div>
+          </a>
         </div>
+        <a
+          href="/BOSCH-Politica-de-Privacidad.pdf"
+          className=" text-white  tracking-[0.5px] text-[12px] "
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Política de Privacidad
+        </a>
       </div>
     </div>
   );

@@ -26,19 +26,51 @@ export const distributorSchema = baseUserSchema.extend({
 });
 
 // Esquema para punto de venta - solo campos específicos de point_of_sale
-export const pointOfSaleSchema = baseUserSchema.extend({
-  userType: z.literal("point_of_sale"),
-  fantasyName: z.string().min(1, "El nombre de fantasía es obligatorio"),
-  socialReason: z.string().min(1, "La razón social es obligatoria"),
-  cuit: z.string().min(1, "El CUIT es obligatorio"),
-  habitualDistributorId: z
-    .string()
-    .min(1, "Debe seleccionar un distribuidor habitual"),
-  phone: z.string().min(1, "El teléfono es obligatorio"),
-  address: z.string().min(1, "La dirección es obligatoria"),
-  city: z.string().min(1, "La localidad es obligatoria"),
-  province: z.string().min(1, "La provincia es obligatoria"),
-});
+export const pointOfSaleSchema = baseUserSchema
+  .extend({
+    userType: z.literal("point_of_sale"),
+    fantasyName: z.string().min(1, "El nombre de fantasía es obligatorio"),
+    socialReason: z.string().min(1, "La razón social es obligatoria"),
+    cuit: z.string().min(1, "El CUIT es obligatorio"),
+    habitualDistributorId: z.string().optional(),
+    otherDistributorName: z.string().optional(),
+    phone: z.string().min(1, "El teléfono es obligatorio"),
+    address: z.string().min(1, "La dirección es obligatoria"),
+    city: z.string().min(1, "La localidad es obligatoria"),
+    province: z.string().min(1, "La provincia es obligatoria"),
+  })
+  .refine(
+    (data) => {
+      // Debe tener distribuidor habitual O nombre de otro distribuidor
+      if (data.habitualDistributorId === "otro") {
+        return (
+          !!data.otherDistributorName &&
+          data.otherDistributorName.trim().length > 0
+        );
+      }
+      return data.habitualDistributorId || data.otherDistributorName;
+    },
+    {
+      message: "Debes seleccionar un distribuidor o especificar otro",
+      path: ["habitualDistributorId"],
+    }
+  )
+  .refine(
+    (data) => {
+      // Si se selecciona "otro", el nombre es obligatorio
+      if (data.habitualDistributorId === "otro") {
+        return (
+          !!data.otherDistributorName &&
+          data.otherDistributorName.trim().length > 0
+        );
+      }
+      return true;
+    },
+    {
+      message: "Debes especificar el nombre del distribuidor",
+      path: ["otherDistributorName"],
+    }
+  );
 
 // Tipos inferidos de los esquemas
 export type DistributorFormData = z.infer<typeof distributorSchema>;

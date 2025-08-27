@@ -61,9 +61,8 @@ export class AuthService {
         address: data.address,
         city: data.city,
         province: data.province,
+        otherDistributorName: data.otherDistributorName,
       });
-
-      console.log(response.data, "asdas asd asd");
 
       // Validar respuesta con Zod
       return response.data;

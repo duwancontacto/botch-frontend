@@ -3,15 +3,22 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import FormField from "@/components/ui/form-field";
-import FormSelect from "@/components/ui/form-select";
 import { useRegisterPointOfSale } from "@/lib/hooks/use-auth-mutations";
 import { useDistributors } from "@/lib/hooks/use-distributors";
 import {
   pointOfSaleSchema,
   PointOfSaleFormData,
 } from "@/lib/schemas/auth-schemas";
-import { Distributor } from "@/lib/types/api-types";
 import { Loader2 } from "lucide-react";
 import { AnimatedSection } from "@/components/ui/animated-section";
 
@@ -41,6 +48,7 @@ export default function FormularioPuntoDeVenta({
       socialReason: "",
       cuit: "",
       habitualDistributorId: "",
+      otherDistributorName: "",
       phone: "",
       address: "",
       city: "",
@@ -52,6 +60,14 @@ export default function FormularioPuntoDeVenta({
   });
 
   const habitualDistributorId = watch("habitualDistributorId");
+  const showOtroInput = habitualDistributorId === "otro";
+
+  const handleDistribuidorChange = (value: string) => {
+    setValue("habitualDistributorId", value);
+    if (value !== "otro") {
+      setValue("otherDistributorName", "");
+    }
+  };
 
   const onSubmit = async (data: PointOfSaleFormData) => {
     try {
@@ -64,12 +80,6 @@ export default function FormularioPuntoDeVenta({
       console.error("Error en el formulario:", error);
     }
   };
-
-  const distributorOptions =
-    distributors?.map((dist: Distributor) => ({
-      value: dist.id,
-      label: dist.name,
-    })) || [];
 
   return (
     <form
@@ -123,22 +133,59 @@ export default function FormularioPuntoDeVenta({
 
       {/* Distribuidor habitual (Select) - Obligatorio */}
       <AnimatedSection delay={0.6}>
-        <div>
-          <FormSelect
-            label="Distribuidor habitual"
-            id="habitualDistributorId"
-            labelClassName="font-bold"
-            placeholder="Seleccionar..."
-            required
-            options={distributorOptions}
-            value={habitualDistributorId}
-            onValueChange={(value) => setValue("habitualDistributorId", value)}
-            error={errors.habitualDistributorId?.message}
-          />
-          {isLoadingDistributors && (
-            <div className="flex items-center gap-2 mt-2 text-sm text-[#2a597e]/70">
-              <Loader2 className="h-4 w-4 animate-spin" />
-              Cargando distribuidores...
+        <div
+          className={`grid gap-6 ${
+            showOtroInput ? "md:grid-cols-2" : "md:grid-cols-1"
+          }`}
+        >
+          <div>
+            <Label className="text-[#2a597e] tracking-[-0.5px] text-[16px] font-bold">
+              Distribuidor habitual *
+            </Label>
+            <Select
+              onValueChange={handleDistribuidorChange}
+              value={habitualDistributorId}
+            >
+              <SelectTrigger className="mt-2 h-14 px-6 rounded-full border-[#2a597e] text-[#6D6D6D] text-[16px]">
+                <SelectValue placeholder="Seleccionar..." />
+              </SelectTrigger>
+              <SelectContent className="text-[#6D6D6D] bg-white">
+                {distributors?.map((distributor) => (
+                  <SelectItem key={distributor.id} value={distributor.id}>
+                    {distributor.name}
+                  </SelectItem>
+                ))}
+                <SelectItem value="otro">Otro</SelectItem>
+              </SelectContent>
+            </Select>
+            {isLoadingDistributors && (
+              <div className="flex items-center gap-2 mt-2 text-sm text-[#2a597e]/70">
+                <Loader2 className="h-4 w-4 animate-spin" />
+                Cargando distribuidores...
+              </div>
+            )}
+            {errors.habitualDistributorId && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.habitualDistributorId.message}
+              </p>
+            )}
+          </div>
+
+          {showOtroInput && (
+            <div>
+              <Label className="text-[#2a597e] tracking-[-0.5px] text-[16px] font-bold">
+                Otro *
+              </Label>
+              <Input
+                {...register("otherDistributorName")}
+                placeholder="Nombre de la distribuidora..."
+                className="mt-2 h-14 px-6 rounded-full border-[#2a597e] text-[#2a597e] focus-visible:ring-0"
+              />
+              {errors.otherDistributorName && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.otherDistributorName.message}
+                </p>
+              )}
             </div>
           )}
         </div>

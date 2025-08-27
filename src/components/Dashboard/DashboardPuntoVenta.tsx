@@ -42,8 +42,6 @@ export default function DashboardPuntoVenta() {
   } = useInvoiceSummary();
   const createPdvInvoice = useCreatePdvInvoice();
 
-  console.log(invoiceSummary, "invoiceSummary");
-
   const {
     register,
     handleSubmit,
@@ -372,7 +370,11 @@ export default function DashboardPuntoVenta() {
                     className="cursor-pointer text-[#6D6D6D]/80 tracking-[-0.5px] text-sm md:text-[18px]"
                   >
                     {"He leído y acepto las "}
-                    <a href="#" className="underline font-bold">
+                    <a
+                      target="_blank"
+                      href="/BOSCH-BC-Bujias-Sorteo-Puntos-de-Venta-Servicios.pdf"
+                      className="underline font-bold"
+                    >
                       {"bases y condiciones."}
                     </a>
                   </Label>
@@ -424,7 +426,15 @@ export default function DashboardPuntoVenta() {
                 <div className="mt-6">
                   <Button
                     variant="outline"
-                    className="rounded-full tracking-[-0.5px] h-12 md:h-[70px] w-[150px] md:w-[200px] bg-white text-[#2a597e] font-bold text-[14px] md:text-[18px] border-transparent hover:bg-white/90 px-6"
+                    className="rounded-full cursor-pointer tracking-[-0.5px] h-12 md:h-[70px] w-[150px] md:w-[200px] bg-white text-[#2a597e] font-bold text-[14px] md:text-[18px] border-transparent hover:bg-white/90 px-6"
+                    onClick={() => {
+                      const link = document.createElement("a");
+                      link.href = "/Catalogo-Bujias-Bosch.pdf";
+                      link.download = "Catalogo-Bujias-Bosch.pdf";
+                      document.body.appendChild(link);
+                      link.click();
+                      document.body.removeChild(link);
+                    }}
                   >
                     {"Ver catálogo"}
                   </Button>
