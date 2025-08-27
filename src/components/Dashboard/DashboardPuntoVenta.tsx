@@ -242,7 +242,6 @@ export default function DashboardPuntoVenta() {
                             {distributor.name}
                           </SelectItem>
                         ))}
-                        <SelectItem value="otro">Otro</SelectItem>
                       </SelectContent>
                     </Select>
                     {isLoadingDistributors && (
