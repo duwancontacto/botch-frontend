@@ -45,7 +45,7 @@ export default function Page() {
         <AnimatedSection delay={0.2}>
           <header className=" relative z-10  pt-10 md:pt-16 px-8 lg:px-20 lg:pt-16 ">
             <div className="flex items-center gap-2 sm:gap-3 text-white px-3  ">
-              <div className="relative w-[120px] lg:w-[211px] h-[37px] lg:h-[66px]">
+              <div className="relative w-[120px] md:w-[138px]  h-[24px] md:h-[30px]">
                 <Image
                   src={logoImage}
                   alt="Logo Bosch"
@@ -59,7 +59,7 @@ export default function Page() {
           </header>
         </AnimatedSection>
         {/* Contenido principal */}
-        <section className=" min-h-[700px] relative z-10 px-4 lg:px-0 flex items-start md:items-center pt-30 md:pt-0  h-[85vh] md:mb-0">
+        <section className=" min-h-[700px] relative z-10 px-4 lg:px-0 flex items-start md:items-center pt-30 md:pt-16  h-[85vh] md:mb-0">
           <div className=" mx-4 md:mx-10  lg:mx-24  z-10 ">
             <AnimatedSection delay={0.1}>
               <p className="text-[#0D385E] drop-shadow-sm text-[15px] md:text-[30px] font-medium leading-[18px] md:leading-[38px] tracking-[-1px] md:tracking-[-2px]">

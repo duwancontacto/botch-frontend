@@ -14,10 +14,10 @@ export default function Header() {
 
   return (
     <div className="absolute inset-x-0 top-2 md:top-6 flex justify-between  px-2 sm:px-6 md:px-10 lg:px-16 xl:px-20 w-full">
-      <div className="flex items-center gap-2 sm:gap-3 text-white   ">
+      <div className="flex items-center gap-2 sm:gap-3 text-white  px-3  ">
         <div
           onClick={() => router.push("/dashboard")}
-          className="relative cursor-pointer w-[120px] lg:w-[211px] h-[37px] lg:h-[66px]"
+          className="relative cursor-pointer w-[100px] lg:w-[160px] h-[20px] lg:h-[33px]"
         >
           <Image
             src={logoImage}

@@ -49,8 +49,8 @@ export default function DashboardDistributor() {
   // Función para descargar el archivo Excel
   const handleDownloadReport = () => {
     const link = document.createElement("a");
-    link.href = "/reporte-campaña-bujias.xlsx";
-    link.download = "reporte-campaña-bujias.xlsx";
+    link.href = "/reporte-campana-bujias.xlsx";
+    link.download = "reporte-campana-bujias.xlsx";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
