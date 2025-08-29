@@ -92,7 +92,7 @@ export default function LoginForm() {
               type="email"
               value={formData.email}
               onChange={handleInputChange}
-              className="h-10 md:h-14 px-6 rounded-full border-1 border-[#2A597E] bg-white text-[#2a597e] focus-visible:ring-0 text-sm sm:text-base"
+              className="h-10 md:h-14 px-6 rounded-full border-1 border-[#2A597E] bg-white text-[#2a597e] focus-visible:ring-0 text-base"
               ///placeholder="tu@email.com"
               required
             />
@@ -113,7 +113,7 @@ export default function LoginForm() {
               name="password"
               value={formData.password}
               onChange={handleInputChange}
-              className="h-10 md:h-14 px-6 rounded-full border-1 border-[#2a597e] bg-white text-[#2a597e] focus-visible:ring-0 text-sm sm:text-base"
+              className="h-10 md:h-14 px-6 rounded-full border-1 border-[#2a597e] bg-white text-[#2a597e] focus-visible:ring-0 text-base"
               ///placeholder="••••••••"
               required
             />
