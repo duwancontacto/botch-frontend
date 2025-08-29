@@ -121,7 +121,7 @@ export default function DashboardDistributor() {
         </section>
 
         {/* Contenido principal */}
-        {/* <section className="mx-auto max-w-6xl px-6 py-3 md:py-0  ">
+        <section className="mx-auto max-w-6xl px-6 py-3 md:py-0  ">
           <AnimatedSection delay={0.4}>
             <h1 className="text-xl sm:text-[36px] font-bold tracking-[-1.5px] text-[#2a597e] pt-[5px] md:pt-[80px]">
               {"Cargá tus ventas y participá"}
@@ -141,7 +141,7 @@ export default function DashboardDistributor() {
               </Button>
             </div>
           </AnimatedSection>
-
+          {/*
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="mt-6 space-y-7 text-[#2a597e]"
@@ -287,8 +287,8 @@ export default function DashboardDistributor() {
                 </Button>
               </div>
             </AnimatedSection>
-          </form>
-        </section> */}
+          </form> */}
+        </section>
 
         <AnimatedSection delay={1}>
           <Footer />
