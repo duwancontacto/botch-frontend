@@ -96,7 +96,7 @@ export default function DashboardPuntoVenta() {
   };
 
   return (
-    <ProtectedRoute requiredUserType="point_of_sale">
+    <>
       {isSuccess ? (
         <SuccessPuntoVenta
           setIsSuccess={handleSuccess}
@@ -445,6 +445,6 @@ export default function DashboardPuntoVenta() {
           <Footer />
         </main>
       )}
-    </ProtectedRoute>
+    </>
   );
 }

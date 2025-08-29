@@ -103,7 +103,7 @@ export default function DashboardDistributor() {
   }
 
   return (
-    <ProtectedRoute requiredUserType="distributor">
+    <>
       <main className="relative min-h-screen bg-white">
         {/* HERO superior con imagen y navegación */}
         <section className="relative  h-64 sm:h-[400px] lg:h-[400px]">
@@ -304,6 +304,6 @@ export default function DashboardDistributor() {
           <Footer />
         </AnimatedSection>
       </main>
-    </ProtectedRoute>
+    </>
   );
 }

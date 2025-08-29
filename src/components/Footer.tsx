@@ -13,7 +13,7 @@ export default function Footer({
     <div
       className={`${
         absolute ? "fixed" : "relative"
-      } inset-x-0 bottom-0 z-20 bg-[#2a597e] p-5 md:p-3 flex justify-center items-center mx-auto ${className}`}
+      } inset-x-0 bottom-0 z-20 bg-[#2a597e] p-2 md:p-3 flex justify-center items-center mx-auto ${className}`}
     >
       <div>
         <div className="flex justify-center items-center gap-4">
@@ -49,7 +49,7 @@ export default function Footer({
         </div>
         <a
           href="/BOSCH-Politica-de-Privacidad.pdf"
-          className=" text-white  tracking-[0.5px] text-[12px] "
+          className=" text-white  tracking-[0.5px] text-[10px] md:text-[12px] "
           target="_blank"
           rel="noopener noreferrer"
         >
