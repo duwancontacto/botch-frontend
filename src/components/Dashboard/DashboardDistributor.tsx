@@ -106,7 +106,7 @@ export default function DashboardDistributor() {
     <>
       <main className="relative min-h-screen bg-white">
         {/* HERO superior con imagen y navegación */}
-        <section className="relative  h-64 sm:h-[400px] lg:h-[400px]">
+        {/* <section className="relative  h-64 sm:h-[400px] lg:h-[400px]">
           <div className="relative h-full block md:flex ">
             <Image
               src={backgroundImage}
@@ -116,11 +116,11 @@ export default function DashboardDistributor() {
               priority
             />
 
-            {/* Topbar */}
+         
 
             <Header />
           </div>
-        </section>
+        </section> */}
 
         {/* Contenido principal */}
         <section className="mx-auto max-w-6xl px-6 py-3 md:py-0  ">
@@ -300,9 +300,9 @@ export default function DashboardDistributor() {
           </form>
         </section>
 
-        <AnimatedSection delay={1}>
+        {/* <AnimatedSection delay={1}>
           <Footer />
-        </AnimatedSection>
+        </AnimatedSection> */}
       </main>
     </>
   );

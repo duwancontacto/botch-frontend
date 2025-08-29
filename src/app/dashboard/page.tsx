@@ -10,13 +10,15 @@ export default function DashboardPage() {
 
   return (
     <ProtectedRoute>
-      <main className="relative min-h-screen bg-white w-[100vw] border-2 border-red-500">
-        {user?.userType === "distributor" ? (
-          <DashboardDistributor />
-        ) : (
-          <DashboardPuntoVenta />
-        )}
-      </main>
+      {user && (
+        <main className="relative min-h-screen bg-white w-[100vw] border-2 border-red-500">
+          {user?.userType === "distributor" ? (
+            <DashboardDistributor />
+          ) : (
+            <DashboardPuntoVenta />
+          )}
+        </main>
+      )}
     </ProtectedRoute>
   );
 }
