@@ -54,3 +54,17 @@ body {
   color: var(--foreground);
   font-family: "BoschSans", Arial, Helvetica, sans-serif;
 }
+
+/* Prevent zoom on mobile when focusing inputs */
+@media screen and (max-width: 768px) {
+  input[type="email"],
+  input[type="password"],
+  input[type="text"],
+  input[type="tel"],
+  input[type="number"],
+  select,
+  textarea {
+    transform-origin: left top;
+    transform: scale(1);
+  }
+}

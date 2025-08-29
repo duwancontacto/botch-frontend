@@ -116,6 +116,8 @@ export default function DashboardDistributor() {
               priority
             />
 
+            {/* Topbar */}
+
             <Header />
           </div>
         </section>
@@ -128,6 +130,7 @@ export default function DashboardDistributor() {
             </h1>
           </AnimatedSection>
 
+          {/* Link de descarga */}
           <AnimatedSection delay={0.6}>
             <div className="mt-6 ">
               <Button
@@ -142,17 +145,20 @@ export default function DashboardDistributor() {
             </div>
           </AnimatedSection>
 
+          {/* Formulario */}
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="mt-6 space-y-7 text-[#2a597e]"
           >
+            {/* Campos obligatorios */}
             <AnimatedSection delay={0.8} className="mb-3">
               <span className="text-[18px] tracking-[-0.75px] ">
                 Todos los campos son obligatorios *
               </span>
             </AnimatedSection>
 
-            {/* <AnimatedSection delay={1.0}>
+            {/* Distribuidor y Archivo */}
+            <AnimatedSection delay={1.0}>
               <div className="grid gap-6 md:grid-cols-2">
                 <div>
                   <Label className="text-[#2a597e] font-bold tracking-[-0.5px] text-sm sm:text-base">
@@ -185,6 +191,7 @@ export default function DashboardDistributor() {
                   )}
                 </div>
 
+                {/* Adjuntar documento */}
                 <div>
                   <Label className="text-[#2a597e] font-bold tracking-[-0.5px] text-sm sm:text-base">
                     Archivo de ventas *
@@ -222,8 +229,9 @@ export default function DashboardDistributor() {
                   )}
                 </div>
               </div>
-            </AnimatedSection> */}
+            </AnimatedSection>
 
+            {/* Notas */}
             <AnimatedSection delay={1.2}>
               <div className="space-y-1 text-[#6D6D6D]/80 text-sm tracking-[-0.5px] sm:text-base md:text-lg">
                 <p>{"* Todos los datos proporcionados serán constatados."}</p>
@@ -235,6 +243,7 @@ export default function DashboardDistributor() {
               </div>
             </AnimatedSection>
 
+            {/* Aceptación de bases */}
             <AnimatedSection delay={1.4}>
               <div className="flex items-center gap-2 sm:gap-3">
                 <Checkbox
@@ -269,6 +278,7 @@ export default function DashboardDistributor() {
               )}
             </AnimatedSection>
 
+            {/* Enviar */}
             <AnimatedSection delay={1.6}>
               <div className="pt-2 mb-20">
                 <Button
