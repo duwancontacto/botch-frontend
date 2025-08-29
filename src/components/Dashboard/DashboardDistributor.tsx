@@ -106,7 +106,7 @@ export default function DashboardDistributor() {
     <>
       <main className="relative min-h-screen bg-white">
         {/* HERO superior con imagen y navegación */}
-        {/* <section className="relative  h-64 sm:h-[400px] lg:h-[400px]">
+        <section className="relative  h-64 sm:h-[400px] lg:h-[400px]">
           <div className="relative h-full block md:flex ">
             <Image
               src={backgroundImage}
@@ -116,21 +116,18 @@ export default function DashboardDistributor() {
               priority
             />
 
-         
-
             <Header />
           </div>
-        </section> */}
+        </section>
 
         {/* Contenido principal */}
-        <section className="mx-auto max-w-6xl px-6 py-3 md:py-0  ">
+        {/* <section className="mx-auto max-w-6xl px-6 py-3 md:py-0  ">
           <AnimatedSection delay={0.4}>
             <h1 className="text-xl sm:text-[36px] font-bold tracking-[-1.5px] text-[#2a597e] pt-[5px] md:pt-[80px]">
               {"Cargá tus ventas y participá"}
             </h1>
           </AnimatedSection>
 
-          {/* Link de descarga */}
           <AnimatedSection delay={0.6}>
             <div className="mt-6 ">
               <Button
@@ -145,19 +142,16 @@ export default function DashboardDistributor() {
             </div>
           </AnimatedSection>
 
-          {/* Formulario */}
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="mt-6 space-y-7 text-[#2a597e]"
           >
-            {/* Campos obligatorios */}
             <AnimatedSection delay={0.8} className="mb-3">
               <span className="text-[18px] tracking-[-0.75px] ">
                 Todos los campos son obligatorios *
               </span>
             </AnimatedSection>
 
-            {/* Distribuidor y Archivo */}
             <AnimatedSection delay={1.0}>
               <div className="grid gap-6 md:grid-cols-2">
                 <div>
@@ -191,7 +185,6 @@ export default function DashboardDistributor() {
                   )}
                 </div>
 
-                {/* Adjuntar documento */}
                 <div>
                   <Label className="text-[#2a597e] font-bold tracking-[-0.5px] text-sm sm:text-base">
                     Archivo de ventas *
@@ -231,7 +224,6 @@ export default function DashboardDistributor() {
               </div>
             </AnimatedSection>
 
-            {/* Notas */}
             <AnimatedSection delay={1.2}>
               <div className="space-y-1 text-[#6D6D6D]/80 text-sm tracking-[-0.5px] sm:text-base md:text-lg">
                 <p>{"* Todos los datos proporcionados serán constatados."}</p>
@@ -243,7 +235,6 @@ export default function DashboardDistributor() {
               </div>
             </AnimatedSection>
 
-            {/* Aceptación de bases */}
             <AnimatedSection delay={1.4}>
               <div className="flex items-center gap-2 sm:gap-3">
                 <Checkbox
@@ -278,7 +269,6 @@ export default function DashboardDistributor() {
               )}
             </AnimatedSection>
 
-            {/* Enviar */}
             <AnimatedSection delay={1.6}>
               <div className="pt-2 mb-20">
                 <Button
@@ -298,11 +288,11 @@ export default function DashboardDistributor() {
               </div>
             </AnimatedSection>
           </form>
-        </section>
+        </section> */}
 
-        {/* <AnimatedSection delay={1}>
+        <AnimatedSection delay={1}>
           <Footer />
-        </AnimatedSection> */}
+        </AnimatedSection>
       </main>
     </>
   );
