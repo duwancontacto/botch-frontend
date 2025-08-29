@@ -141,7 +141,7 @@ export default function DashboardDistributor() {
               </Button>
             </div>
           </AnimatedSection>
-          {/*
+
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="mt-6 space-y-7 text-[#2a597e]"
@@ -152,7 +152,7 @@ export default function DashboardDistributor() {
               </span>
             </AnimatedSection>
 
-            <AnimatedSection delay={1.0}>
+            {/* <AnimatedSection delay={1.0}>
               <div className="grid gap-6 md:grid-cols-2">
                 <div>
                   <Label className="text-[#2a597e] font-bold tracking-[-0.5px] text-sm sm:text-base">
@@ -222,7 +222,7 @@ export default function DashboardDistributor() {
                   )}
                 </div>
               </div>
-            </AnimatedSection>
+            </AnimatedSection> */}
 
             <AnimatedSection delay={1.2}>
               <div className="space-y-1 text-[#6D6D6D]/80 text-sm tracking-[-0.5px] sm:text-base md:text-lg">
@@ -287,7 +287,7 @@ export default function DashboardDistributor() {
                 </Button>
               </div>
             </AnimatedSection>
-          </form> */}
+          </form>
         </section>
 
         <AnimatedSection delay={1}>
