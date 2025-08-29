@@ -108,7 +108,7 @@ export default function LoginPage() {
             src={backgroundImageMobile}
             alt="Fondo Login"
             fill
-            className="absolute block  h-[300px] max-h-[250px] lg:hidden inset-0 object-cover"
+            className="absolute block  h-[300px] lg:hidden inset-0 object-cover"
             priority
           />
 
