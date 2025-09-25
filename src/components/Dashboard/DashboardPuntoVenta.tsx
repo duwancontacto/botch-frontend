@@ -17,7 +17,6 @@ import {
 import Image from "next/image";
 import backgroundImage from "@/assets/FondoDataPuntoVenta.webp";
 import Footer from "@/components/Footer";
-import ProtectedRoute from "@/components/ProtectedRoute";
 import { useDistributors } from "@/lib/hooks/use-distributors";
 import { useCreatePdvInvoice } from "@/lib/hooks/use-pdv-invoice-mutations";
 import { useInvoiceSummary } from "@/lib/hooks/use-invoice-summary";
@@ -88,6 +87,31 @@ export default function DashboardPuntoVenta() {
     { title: "De 200 a 399 bujías, sumás 8 chances." },
     { title: "A partir de 400 bujías, sumás 20 chances." },
   ];
+
+  // Reglas de cálculo para chances
+  const reglasChances = [
+    { min: 50, chances: 1 },
+    { min: 100, chances: 3 },
+    { min: 200, chances: 8 },
+    { min: 400, chances: 20 },
+  ];
+
+  // Calcular cuántas bujías faltan para cada nivel
+  const calcularNivelesConFaltantes = (totalUnits: number) => {
+    return reglasChances
+      .filter((nivel) => totalUnits < nivel.min) // Solo mostrar niveles que faltan
+      .map((nivel) => {
+        const faltantes = nivel.min - totalUnits;
+        return {
+          min: nivel.min,
+          chances: nivel.chances,
+          faltantes,
+          mensaje: `Te faltan ${faltantes} bujías para obtener ${
+            nivel.chances
+          } chance${nivel.chances > 1 ? "s" : ""}.`,
+        };
+      });
+  };
 
   const handleSuccess = () => {
     setIsSuccess(false);
@@ -161,8 +185,8 @@ export default function DashboardPuntoVenta() {
           {/* Componente de opciones de puntajes */}
           <AnimatedSection delay={0.4}>
             <section className="bg-[#3dadff]/15 p-6 py-4 md:py-10">
-              <div className="mx-auto  max-w-6xl  block md:items-center py-2 md:px-6 md:py-6 md:flex  md:justify-center px-3 ">
-                <h2 className="text-center sm:text-center text-[#2a597e] text-[14px]  mb-2 md:mb-0 md:text-[36px] mr-0 md:mr-10 font-bold tracking-[-1px] md:tracking-[-1.5px]">
+              <div className="mx-auto max-w-6xl block md:items-center py-2 md:px-6 md:py-6 md:flex md:justify-center px-3">
+                <h2 className="text-center sm:text-center text-[#2a597e] text-[14px] mb-2 md:mb-0 md:text-[36px] mr-0 md:mr-10 font-bold tracking-[-1px] md:tracking-[-1.5px]">
                   {"Ya llevás cargadas"}
                 </h2>
                 <div className="flex items-center justify-center gap-2 mx-3 md:mx-10">
@@ -175,7 +199,7 @@ export default function DashboardPuntoVenta() {
                     </div>
                   ) : (
                     <>
-                      <span className=" text-2xl md:text-5xl font-bold tracking-[-1px] md:tracking-[-1.5px] text-[#2a597e]">
+                      <span className="text-2xl md:text-5xl font-bold tracking-[-1px] md:tracking-[-1.5px] text-[#2a597e]">
                         {invoiceSummary?.totalUnits || 0}
                       </span>
                       <span className="text-[#2a597e] font-bold tracking-[-0.5px] pl-2 text-[10px] md:text-[16px]">
@@ -193,8 +217,28 @@ export default function DashboardPuntoVenta() {
                     </>
                   )}
                 </div>
-                <div />
               </div>
+
+              {/* Sección de "Te faltan X bujías" */}
+              {invoiceSummary && (
+                <div className="flex justify-center ">
+                  <ul className="space-y-2 md:space-y-3">
+                    {calcularNivelesConFaltantes(
+                      invoiceSummary.totalUnits || 0
+                    ).map((nivel, index) => (
+                      <AnimatedSection
+                        key={index}
+                        delay={0.5 + index * 0.1}
+                        className="text-left"
+                      >
+                        <li className="text-[#2a597e] text-sm md:text-lg font-medium list-disc list-inside">
+                          {nivel.mensaje}
+                        </li>
+                      </AnimatedSection>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </section>
           </AnimatedSection>
 

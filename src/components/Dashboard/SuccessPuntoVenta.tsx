@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import backgroundImage from "@/assets/FondoFinishRegister.webp";
-import { useAuth } from "store/useAuth";
 import { InvoiceSummary } from "@/lib/types/api-types";
 import { useState, useEffect } from "react";
 import ConfettiExplosion from "react-confetti-explosion";
@@ -17,8 +16,32 @@ export default function SuccessPuntoVenta({
   setIsSuccess: (isSuccess: boolean) => void;
   invoiceSummary: InvoiceSummary;
 }) {
-  const { logout } = useAuth();
   const [isExploding, setIsExploding] = useState(false);
+
+  // Reglas de cálculo para chances
+  const reglasChances = [
+    { min: 50, chances: 1 },
+    { min: 100, chances: 3 },
+    { min: 200, chances: 8 },
+    { min: 400, chances: 20 },
+  ];
+
+  // Calcular cuántas bujías faltan para cada nivel
+  const calcularNivelesConFaltantes = (totalUnits: number) => {
+    return reglasChances
+      .filter((nivel) => totalUnits < nivel.min) // Solo mostrar niveles que faltan
+      .map((nivel) => {
+        const faltantes = nivel.min - totalUnits;
+        return {
+          min: nivel.min,
+          chances: nivel.chances,
+          faltantes,
+          mensaje: `Te faltan ${faltantes} bujías para obtener ${
+            nivel.chances
+          } chance${nivel.chances > 1 ? "s" : ""}.`,
+        };
+      });
+  };
 
   useEffect(() => {
     // Activar la explosión de confeti cuando el componente se monta
@@ -33,10 +56,6 @@ export default function SuccessPuntoVenta({
 
     return () => clearTimeout(timer);
   }, []);
-
-  const handleLogout = () => {
-    logout();
-  };
 
   return (
     <main className="relative min-h-screen bg-white">
@@ -117,15 +136,15 @@ export default function SuccessPuntoVenta({
       {/* Franja de contadores (azul claro) */}
       <AnimatedSection delay={0.8}>
         <section className="bg-[#3dadff]/15 p-6 py-4 md:py-10">
-          <div className="mx-auto  max-w-6xl  block md:items-center py-2 md:px-6 md:py-6 md:flex  md:justify-center px-3 ">
-            <h2 className="text-center sm:text-center text-[#2a597e] text-md  mb-2 md:mb-0 md:text-[36px] mr-0 md:mr-10 font-bold tracking-[-1px] md:tracking-[-1.5px]">
+          <div className="mx-auto max-w-6xl block md:items-center py-2 md:px-6 md:py-6 md:flex md:justify-center px-3">
+            <h2 className="text-center sm:text-center text-[#2a597e] text-md mb-2 md:mb-0 md:text-[36px] mr-0 md:mr-10 font-bold tracking-[-1px] md:tracking-[-1.5px]">
               {"Ya llevás cargadas"}
             </h2>
             <div className="flex items-center justify-center gap-2 mx-3 md:mx-10">
-              <span className=" text-2xl md:text-5xl font-bold tracking-[-1px] md:tracking-[-1.5px] text-[#2a597e]">
+              <span className="text-2xl md:text-5xl font-bold tracking-[-1px] md:tracking-[-1.5px] text-[#2a597e]">
                 {invoiceSummary?.totalUnits || 0}
               </span>
-              <span className="text-[#2a597e] font-bold tracking-[-0.5px]  text-[10px] md:text-[16px]">
+              <span className="text-[#2a597e] font-bold tracking-[-0.5px] text-[10px] md:text-[16px]">
                 {"bujías"}
               </span>
               <span className="mx-4 md:mx-8 text-2xl md:text-5xl font-bold tracking-[-1px] md:tracking-[-1.5px] text-[#2a597e]">
@@ -134,12 +153,32 @@ export default function SuccessPuntoVenta({
               <span className="text-2xl md:text-5xl font-bold tracking-[-1px] md:tracking-[-1.5px] text-[#2a597e]">
                 {invoiceSummary?.totalChances || 0}
               </span>
-              <span className="text-[#2a597e] font-bold tracking-[-0.5px]  text-[10px] md:text-[16px]">
+              <span className="text-[#2a597e] font-bold tracking-[-0.5px] text-[10px] md:text-[16px]">
                 {"chances"}
               </span>
             </div>
-            <div />
           </div>
+
+          {/* Sección de "Te faltan X bujías" */}
+          {invoiceSummary && (
+            <div className="flex justify-center ">
+              <ul className="space-y-2 md:space-y-3">
+                {calcularNivelesConFaltantes(
+                  invoiceSummary.totalUnits || 0
+                ).map((nivel, index) => (
+                  <AnimatedSection
+                    key={index}
+                    delay={0.5 + index * 0.1}
+                    className="text-left"
+                  >
+                    <li className="text-[#2a597e] text-sm md:text-lg font-medium list-disc list-inside">
+                      {nivel.mensaje}
+                    </li>
+                  </AnimatedSection>
+                ))}
+              </ul>
+            </div>
+          )}
         </section>
       </AnimatedSection>
       {/* Bloque gris con CTA catálogo */}
