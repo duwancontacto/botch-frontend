@@ -390,7 +390,6 @@ export default function DashboardPuntoVenta() {
                     ** Se contabilizan todas las compras realizadas entre
                     septiembre y noviembre.
                   </p>
-                  <p>*** Las chances se contabilizan por cada factura.</p>
                 </div>
               </AnimatedSection>
 
