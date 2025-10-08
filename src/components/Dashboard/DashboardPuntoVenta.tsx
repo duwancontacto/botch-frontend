@@ -128,6 +128,8 @@ export default function DashboardPuntoVenta() {
             invoiceSummary || {
               totalUnits: 0,
               totalChances: 0,
+              currentMonthUnits: 0,
+              currentMonthChances: 0,
               niveles: [],
             }
           }
@@ -187,7 +189,7 @@ export default function DashboardPuntoVenta() {
             <section className="bg-[#3dadff]/15 p-6 py-4 md:py-10">
               <div className="mx-auto max-w-6xl block md:items-center py-2 md:px-6 md:py-6 md:flex md:justify-center px-3">
                 <h2 className="text-center sm:text-center text-[#2a597e] text-[14px] mb-2 md:mb-0 md:text-[36px] mr-0 md:mr-10 font-bold tracking-[-1px] md:tracking-[-1.5px]">
-                  {"Ya llevás cargadas"}
+                  {"Llevás cargadas en total"}
                 </h2>
                 <div className="flex items-center justify-center gap-2 mx-3 md:mx-10">
                   {isLoadingSummary ? (
@@ -219,8 +221,17 @@ export default function DashboardPuntoVenta() {
                 </div>
               </div>
 
+              {/* Información del mes actual */}
+              {invoiceSummary && invoiceSummary.currentMonthUnits > 0 && (
+                <AnimatedSection delay={0.5} className="flex justify-center">
+                  <p className="text-[#2a597e] text-sm md:text-lg font-medium">
+                    Este mes cargaste {invoiceSummary.currentMonthUnits} bujías.
+                  </p>
+                </AnimatedSection>
+              )}
+
               {/* Sección de "Te faltan X bujías" */}
-              {invoiceSummary && (
+              {/* {invoiceSummary && (
                 <div className="flex justify-center ">
                   <ul className="space-y-2 md:space-y-3">
                     {calcularNivelesConFaltantes(
@@ -228,7 +239,7 @@ export default function DashboardPuntoVenta() {
                     ).map((nivel, index) => (
                       <AnimatedSection
                         key={index}
-                        delay={0.5 + index * 0.1}
+                        delay={0.6 + index * 0.1}
                         className="text-left"
                       >
                         <li className="text-[#2a597e] text-sm md:text-lg font-medium list-disc list-inside">
@@ -238,7 +249,7 @@ export default function DashboardPuntoVenta() {
                     ))}
                   </ul>
                 </div>
-              )}
+              )} */}
             </section>
           </AnimatedSection>
 
@@ -389,6 +400,10 @@ export default function DashboardPuntoVenta() {
                   <p>
                     ** Se contabilizan todas las compras realizadas entre
                     septiembre y noviembre.
+                  </p>
+                  <p>
+                    *** El número máximo de chances acumulables por
+                    participantes será de 20 por mes
                   </p>
                 </div>
               </AnimatedSection>

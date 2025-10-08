@@ -35,6 +35,8 @@ export interface ApiError {
 export interface InvoiceSummary {
   totalUnits: number;
   totalChances: number;
+  currentMonthUnits: number;
+  currentMonthChances: number;
   niveles: Array<{
     min: number;
     chances: number;
