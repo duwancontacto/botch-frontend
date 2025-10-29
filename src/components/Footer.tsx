@@ -47,14 +47,24 @@ export default function Footer({
             />
           </a>
         </div>
-        <a
-          href="/BOSCH-Politica-de-Privacidad.pdf"
-          className=" text-white  tracking-[0.5px] text-[10px] md:text-[12px] "
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Política de Privacidad
-        </a>
+        <div className="flex flex-col items-center justify-center">
+          <a
+            href="/BOSCH-Politica-de-Privacidad.pdf"
+            className=" text-white  tracking-[0.5px] text-[10px] md:text-[12px] "
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Políticas de Privacidad
+          </a>
+          <a
+            href="/BOSCH-BC-Bujias.pdf"
+            className=" text-white text-center  tracking-[0.5px] text-[10px] md:text-[12px] "
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Bases y condiciones
+          </a>
+        </div>
       </div>
     </div>
   );
